@@ -19,16 +19,12 @@ public class PlayerController : MonoBehaviour
 
         Vector3 movingDirection = new Vector3(moveHorizontal, 0, moveVertical);
 
-        //Remove the log if working.
-        Debug.Log(moveHorizontal + " | " + moveVertical);
-
         if (movingDirection != Vector3.zero)
         {
             motor.StartMovingInDirection(movingDirection);
         }
         else
         {
-            Debug.Log("We are stopping");
             motor.StopMoving();
         }
 	}
