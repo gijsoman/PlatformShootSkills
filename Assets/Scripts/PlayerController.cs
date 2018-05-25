@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
         motor = GetComponent<PlayerMotor>();
     }
 
-    private void Update ()
+    private void Update()
     {
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
@@ -21,6 +21,15 @@ public class PlayerController : MonoBehaviour
 
         //Remove the log if working.
         Debug.Log(moveHorizontal + " | " + moveVertical);
-        motor.MoveInDirection(movingDirection);
+
+        if (movingDirection != Vector3.zero)
+        {
+            motor.StartMovingInDirection(movingDirection);
+        }
+        else
+        {
+            Debug.Log("We are stopping");
+            motor.StopMoving();
+        }
 	}
 }
