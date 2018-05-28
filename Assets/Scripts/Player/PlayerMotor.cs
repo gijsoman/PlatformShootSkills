@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMotor : MonoBehaviour
@@ -16,7 +14,7 @@ public class PlayerMotor : MonoBehaviour
 
     public void StartMovingInDirection(Vector3 direction)
     {
-        rigidBody.AddForce(direction * Speed);
+        rigidBody.AddForce(direction * Speed * Time.deltaTime);
     }
 
     public void StopMoving()
