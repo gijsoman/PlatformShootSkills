@@ -15,15 +15,6 @@ public class PlayerController : MonoBehaviour
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
-        Vector3 movingDirection = new Vector3(moveHorizontal, 0, moveVertical);
-
-        if (movingDirection != Vector3.zero)
-        {
-            motor.StartMovingInDirection(movingDirection);
-        }
-        else
-        {
-            motor.StopMoving();
-        }
+        motor.StartMovingInDirection(moveHorizontal, moveVertical);
 	}
 }
