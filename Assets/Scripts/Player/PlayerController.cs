@@ -12,9 +12,9 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
 
-        motor.StartMovingInDirection(moveHorizontal, moveVertical);
+        motor.StartMovingInDirection(x, z);
 	}
 }
