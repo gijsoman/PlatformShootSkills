@@ -24,8 +24,18 @@ public class PlayerMotor : MonoBehaviour
         rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
     }
 
-    public void StartMovingInDirection(Vector3 move, bool jumping)
+    public void Move(Vector3 move, bool jumping)
     {
-        
+        turnAmount = Mathf.Atan2(move.x, move.z);
+        forwardAmount = move.z;
+
+        if (isGrounded)
+        {
+            HandleGroundMovement(jumping);
+        }
+        else
+        {
+            HandleAirbourneMovement();
+        }
     }
 }
