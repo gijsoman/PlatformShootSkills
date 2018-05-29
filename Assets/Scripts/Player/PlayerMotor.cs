@@ -1,21 +1,31 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(CapsuleCollider))]
 public class PlayerMotor : MonoBehaviour
 {
-    public float Speed = 150f;
-    public float RotationSpeed = 3.0f;
+    [SerializeField] private float movingTurnSpeed = 360;
+    [SerializeField] private float stationaryTurnSpeed = 180;
+    [SerializeField] private float jumpPower = 12f;
 
-    public float rawZAxis;
-    public float rawXAxis;
+    private Rigidbody rigidbody;
+    private bool isGrounded = false;
+    private float turnAmount;
+    private float forwardAmount;
+    private float capsuleHeight;
+    private CapsuleCollider capsule;
 
-    public void StartMovingInDirection(float xAxis, float zAxis)
+
+    private void Start()
     {
-        rawZAxis = zAxis;
-        rawXAxis = xAxis;
-        xAxis = xAxis * Time.deltaTime * Speed;
-        zAxis = zAxis * Time.deltaTime * RotationSpeed;
-        transform.Rotate(0, xAxis, 0);
-        transform.Translate(0, 0, zAxis);
+        rigidbody = GetComponent<Rigidbody>();
+        capsule = GetComponent<CapsuleCollider>();
+
+        rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+    }
+
+    public void StartMovingInDirection(Vector3 move, bool jumping)
+    {
+        
     }
 }

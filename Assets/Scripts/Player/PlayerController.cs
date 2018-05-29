@@ -5,7 +5,7 @@ public class PlayerController : MonoBehaviour
 {
     private PlayerMotor motor;
     private Vector3 move;
-    private bool jumping;
+    private bool jumping = false;
 
     private void Start()
     {
@@ -22,10 +22,12 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //read the inputs
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
 
-        motor.StartMovingInDirection(x, z);
+        move = vertical * Vector3.forward + horizontal * Vector3.right;
+
+        motor.StartMovingInDirection(move, jumping);
+        //jumping = false;
 	}
 }

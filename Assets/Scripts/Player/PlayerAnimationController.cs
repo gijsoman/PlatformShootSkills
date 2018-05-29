@@ -16,7 +16,5 @@ public class PlayerAnimationController : MonoBehaviour
 
     private void Update()
     {
-        animator.SetFloat("Forward", playerMotor.rawZAxis);
-        animator.SetFloat("Turn", playerMotor.rawXAxis);
     }
 }
