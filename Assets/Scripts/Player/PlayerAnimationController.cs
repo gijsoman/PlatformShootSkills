@@ -5,16 +5,15 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class PlayerAnimationController : MonoBehaviour
 {
-    private Animator animator;
+    [SerializeField] private float animationSpeedMultiplier;
+
+    public Animator PlayerAnimator;
     private PlayerMotor playerMotor;
 
     private void Start()
     {
-        animator = GetComponent<Animator>();
+        PlayerAnimator = GetComponent<Animator>();
         playerMotor = GetComponent<PlayerMotor>();
     }
-
-    private void Update()
-    {
-    }
+    
 }

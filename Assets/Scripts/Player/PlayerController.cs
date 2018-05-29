@@ -28,6 +28,6 @@ public class PlayerController : MonoBehaviour
         move = vertical * Vector3.forward + horizontal * Vector3.right;
 
         motor.Move(move, jumping);
-        //jumping = false;
+        jumping = false;
 	}
 }
