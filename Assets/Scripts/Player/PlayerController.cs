@@ -4,17 +4,30 @@
 public class PlayerController : MonoBehaviour
 {
     private PlayerMotor motor;
+    private Vector3 move;
+    private bool jumping = false;
 
     private void Start()
     {
         motor = GetComponent<PlayerMotor>();
     }
 
+    private void Update()
+    {
+        if (!jumping)
+        {
+            jumping = Input.GetButtonDown("Jump");
+        }
+    }
+
     private void FixedUpdate()
     {
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
 
-        motor.StartMovingInDirection(x, z);
+        move = vertical * Vector3.forward + horizontal * Vector3.right;
+
+        motor.Move(move, jumping);
+        jumping = false;
 	}
 }

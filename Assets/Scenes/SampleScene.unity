@@ -677,10 +677,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d4cce76a4f0d2e49ba840266581f894, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 150
-  RotationSpeed: 3
-  rawZAxis: 0
-  rawXAxis: 0
+  movingTurnSpeed: 360
+  stationaryTurnSpeed: 180
+  jumpPower: 2
+  gravityMultiplier: 0
+  movementSpeedMultiplier: 1
+  groundCheckDistance: 0.1
 --- !u!114 &1954017192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -692,6 +694,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 995fcc455ec65e34991f8f916fc9ac48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationSpeedMultiplier: 0
+  PlayerAnimator: {fileID: 0}
 --- !u!1 &2091751287
 GameObject:
   m_ObjectHideFlags: 0

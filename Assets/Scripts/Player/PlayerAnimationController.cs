@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class PlayerAnimationController : MonoBehaviour
 {
+    [SerializeField] private float animationSpeedMultiplier;
+
     private Animator animator;
     private PlayerMotor playerMotor;
 
@@ -14,9 +16,9 @@ public class PlayerAnimationController : MonoBehaviour
         playerMotor = GetComponent<PlayerMotor>();
     }
 
-    private void Update()
+    public void UpdateAnimator()
     {
-        animator.SetFloat("Forward", playerMotor.rawZAxis);
-        animator.SetFloat("Turn", playerMotor.rawXAxis);
+
     }
+    
 }
