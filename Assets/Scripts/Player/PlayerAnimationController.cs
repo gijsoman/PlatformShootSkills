@@ -7,13 +7,18 @@ public class PlayerAnimationController : MonoBehaviour
 {
     [SerializeField] private float animationSpeedMultiplier;
 
-    public Animator PlayerAnimator;
+    private Animator animator;
     private PlayerMotor playerMotor;
 
     private void Start()
     {
-        PlayerAnimator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
         playerMotor = GetComponent<PlayerMotor>();
+    }
+
+    public void UpdateAnimator()
+    {
+
     }
     
 }

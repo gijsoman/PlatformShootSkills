@@ -36,7 +36,7 @@ public class PlayerMotor : MonoBehaviour
 
         moveDirection = transform.InverseTransformDirection(moveDirection);
         CheckGroundStatus();
-
+        //moveDirection = Vector3.ProjectOnPlane(moveDirection, groundNormal);
         turnAmount = Mathf.Atan2(moveDirection.x, moveDirection.z);
         forwardAmount = moveDirection.z;
 
@@ -48,6 +48,8 @@ public class PlayerMotor : MonoBehaviour
         {
             //HandleAirbourneMovement();
         }
+
+        animationController.UpdateAnimator(//what do we need to give this update function?);
     }
 
     private void HandleGroundMovement(bool jumping)
@@ -63,7 +65,7 @@ public class PlayerMotor : MonoBehaviour
     {
         RaycastHit hit;
 
-        Debug.DrawLine(transform.position + (Vector3.up * 0.1f), transform.position + (Vector3.up * 0.1f) + (Vector3.down * groundCheckDistance), Color.green, 2, false);
+        //Debug.DrawLine(transform.position + (Vector3.up * 0.1f), transform.position + (Vector3.up * 0.1f) + (Vector3.down * groundCheckDistance), Color.green, 2, false);
 
         if (Physics.Raycast(transform.position + (Vector3.up * 0.1f), Vector3.down, out hit, groundCheckDistance))
         {
