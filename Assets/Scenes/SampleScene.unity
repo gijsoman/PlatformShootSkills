@@ -679,10 +679,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movingTurnSpeed: 360
   stationaryTurnSpeed: 180
-  jumpPower: 2
-  gravityMultiplier: 0
+  jumpPower: 12
+  gravityMultiplier: 2
   movementSpeedMultiplier: 1
-  groundCheckDistance: 0.1
+  groundCheckDistance: 0.2
+--- !u!95 &1954017190 stripped
+Animator:
+  m_PrefabParentObject: {fileID: 9579096, guid: 7737647c22c1fc64a88d5cd030c352ce,
+    type: 2}
+  m_PrefabInternal: {fileID: 1782584715}
 --- !u!114 &1954017192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -694,8 +699,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 995fcc455ec65e34991f8f916fc9ac48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationSpeedMultiplier: 0
-  PlayerAnimator: {fileID: 0}
+  animationSpeedMultiplier: 1
+  animator: {fileID: 1954017190}
 --- !u!1 &2091751287
 GameObject:
   m_ObjectHideFlags: 0

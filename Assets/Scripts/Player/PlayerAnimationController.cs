@@ -20,7 +20,7 @@ public class PlayerAnimationController : MonoBehaviour
         playerMotor = GetComponent<PlayerMotor>();
     }
 
-    public void UpdateAnimator(float _forwardAmount, float _turnAmount, bool _isGrounded, Rigidbody _rigidbody, float _moveSpeedMultiplier, float _runCycleLegOffset, float _k_Half)
+    public void UpdateAnimator(Vector3 _move, float _forwardAmount, float _turnAmount, bool _isGrounded, Rigidbody _rigidbody, float _moveSpeedMultiplier, float _runCycleLegOffset, float _k_Half)
     {
         rigidbody = _rigidbody;
         moveSpeedMultiplier = _moveSpeedMultiplier;
@@ -42,7 +42,14 @@ public class PlayerAnimationController : MonoBehaviour
             animator.SetFloat("JumpLeg", jumpLeg);
         }
 
-        animator.speed = 1f;
+        if (_isGrounded && _move.magnitude > 0)
+        {
+            animator.speed = animationSpeedMultiplier;
+        }
+        else
+        {
+            animator.speed = 1f;
+        }
     }
 
     public void UpdateRootMotion(bool _applyRootMotion)

@@ -57,7 +57,7 @@ public class PlayerMotor : MonoBehaviour
             HandleAirbourneMovement();
         }
 
-        animationController.UpdateAnimator(forwardAmount, turnAmount, isGrounded, rigidbody, movementSpeedMultiplier, runCycleLegOffset, K_half);
+        animationController.UpdateAnimator(moveDirection, forwardAmount, turnAmount, isGrounded, rigidbody, movementSpeedMultiplier, runCycleLegOffset, K_half);
     }
 
     private void HandleGroundMovement(bool jumping)
@@ -66,7 +66,8 @@ public class PlayerMotor : MonoBehaviour
         {
             rigidbody.velocity = new Vector3(rigidbody.velocity.x, jumpPower, rigidbody.velocity.z);
             isGrounded = false;
-     
+            applyRootMotion = false;
+            animationController.UpdateRootMotion(applyRootMotion);
             groundCheckDistance = 0.1f;
         }
     }
@@ -96,7 +97,6 @@ public class PlayerMotor : MonoBehaviour
         else
         {
             isGrounded = false;
-            Debug.Log("Set here!");
             groundNormal = Vector3.up;
             applyRootMotion = false;
             animationController.UpdateRootMotion(applyRootMotion);
