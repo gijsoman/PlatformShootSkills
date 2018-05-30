@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
         if (!jumping)
         {
             jumping = Input.GetButtonDown("Jump");
+            Debug.Log("jumping = " + jumping);
         }
     }
 

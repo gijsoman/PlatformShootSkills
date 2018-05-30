@@ -13,9 +13,11 @@ public class PlayerMotor : MonoBehaviour
     [SerializeField] private float groundCheckDistance = 0.1f;
 
     private Rigidbody rigidbody;
+    private float K_half = 0.5f;
+    private float runCycleLegOffset = 0.2f;
     private PlayerAnimationController animationController;
     private float origGroundCheckDistane;
-    private bool isGrounded = false;
+    private bool isGrounded = true;
     private float turnAmount;
     private float forwardAmount;
     private Vector3 groundNormal;
@@ -27,6 +29,7 @@ public class PlayerMotor : MonoBehaviour
         animationController = GetComponent<PlayerAnimationController>();
 
         rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+        origGroundCheckDistane = groundCheckDistance;
     }
 
     public void Move(Vector3 moveDirection, bool jumping)
@@ -38,6 +41,8 @@ public class PlayerMotor : MonoBehaviour
 
         moveDirection = transform.InverseTransformDirection(moveDirection);
         CheckGroundStatus();
+
+        moveDirection = Vector3.ProjectOnPlane(moveDirection, groundNormal);
         turnAmount = Mathf.Atan2(moveDirection.x, moveDirection.z);
         forwardAmount = moveDirection.z;
 
@@ -50,15 +55,17 @@ public class PlayerMotor : MonoBehaviour
             HandleAirbourneMovement();
         }
 
-        animationController.UpdateAnimator(forwardAmount, turnAmount, isGrounded, rigidbody, applyRootMotion);
+        animationController.UpdateAnimator(forwardAmount, turnAmount, isGrounded, rigidbody, movementSpeedMultiplier, runCycleLegOffset, K_half);
     }
 
     private void HandleGroundMovement(bool jumping)
     {
-        if (jumping)
+        if (jumping && animationController.animator.GetCurrentAnimatorStateInfo(0).IsName("Grounded"))
         {
             rigidbody.velocity = new Vector3(rigidbody.velocity.x, jumpPower, rigidbody.velocity.z);
             isGrounded = false;
+     
+            groundCheckDistance = 0.1f;
         }
     }
 
@@ -75,18 +82,22 @@ public class PlayerMotor : MonoBehaviour
     {
         RaycastHit hit;
 
+        Debug.DrawLine(transform.position + (Vector3.up * 0.1f), transform.position + (Vector3.up * 0.1f) + (Vector3.down * groundCheckDistance), Color.green);
+
         if (Physics.Raycast(transform.position + (Vector3.up * 0.1f), Vector3.down, out hit, groundCheckDistance))
         {
             groundNormal = hit.normal;
             isGrounded = true;
             applyRootMotion = true;
-            Debug.Log("ïsgrounded");
+            animationController.UpdateRootMotion(applyRootMotion);
         }
         else
         {
             isGrounded = false;
+            Debug.Log("Set here!");
             groundNormal = Vector3.up;
             applyRootMotion = false;
+            animationController.UpdateRootMotion(applyRootMotion);
         }
     }
 }
