@@ -46,6 +46,8 @@ public class PlayerMotor : MonoBehaviour
         turnAmount = Mathf.Atan2(moveDirection.x, moveDirection.z);
         forwardAmount = moveDirection.z;
 
+        ApplyExtraTurnRotation();
+
         if (isGrounded)
         {
             HandleGroundMovement(jumping);
@@ -99,5 +101,11 @@ public class PlayerMotor : MonoBehaviour
             applyRootMotion = false;
             animationController.UpdateRootMotion(applyRootMotion);
         }
+    }
+
+    private void ApplyExtraTurnRotation()
+    {
+        float turnSpeed = Mathf.Lerp(stationaryTurnSpeed, movingTurnSpeed, forwardAmount);
+        transform.Rotate(0, turnAmount * turnSpeed *Time.deltaTime, 0);
     }
 }
