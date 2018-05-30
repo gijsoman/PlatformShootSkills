@@ -13,8 +13,6 @@ public class PlayerMotor : MonoBehaviour
     [SerializeField] private float groundCheckDistance = 0.1f;
 
     private Rigidbody rigidbody;
-    private float K_half = 0.5f;
-    private float runCycleLegOffset = 0.2f;
     private PlayerAnimationController animationController;
     private float origGroundCheckDistane;
     private bool isGrounded = true;
@@ -57,7 +55,7 @@ public class PlayerMotor : MonoBehaviour
             HandleAirbourneMovement();
         }
 
-        animationController.UpdateAnimator(moveDirection, forwardAmount, turnAmount, isGrounded, rigidbody, movementSpeedMultiplier, runCycleLegOffset, K_half);
+        animationController.UpdateAnimator(moveDirection, forwardAmount, turnAmount, isGrounded, rigidbody, movementSpeedMultiplier);
     }
 
     private void HandleGroundMovement(bool jumping)
