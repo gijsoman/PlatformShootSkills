@@ -18,6 +18,7 @@ public class PlayerMotor : MonoBehaviour
     private float turnAmount;
     private float forwardAmount;
     private Vector3 groundNormal;
+    private bool applyRootMotion = false;
 
     private void Start()
     {
@@ -36,7 +37,6 @@ public class PlayerMotor : MonoBehaviour
 
         moveDirection = transform.InverseTransformDirection(moveDirection);
         CheckGroundStatus();
-        //moveDirection = Vector3.ProjectOnPlane(moveDirection, groundNormal);
         turnAmount = Mathf.Atan2(moveDirection.x, moveDirection.z);
         forwardAmount = moveDirection.z;
 
@@ -49,7 +49,7 @@ public class PlayerMotor : MonoBehaviour
             //HandleAirbourneMovement();
         }
 
-        animationController.UpdateAnimator(//what do we need to give this update function?);
+        animationController.UpdateAnimator(forwardAmount, turnAmount, isGrounded, rigidbody);
     }
 
     private void HandleGroundMovement(bool jumping)

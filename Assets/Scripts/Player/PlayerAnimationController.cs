@@ -16,8 +16,17 @@ public class PlayerAnimationController : MonoBehaviour
         playerMotor = GetComponent<PlayerMotor>();
     }
 
-    public void UpdateAnimator()
+    public void UpdateAnimator(float forwardAmount, float turnAmount, bool isGrounded, Rigidbody rigidbody)
     {
+        animator.SetFloat("Forward", forwardAmount, 0.1f, Time.deltaTime);
+        animator.SetFloat("Turn", turnAmount, 0.1f, Time.deltaTime);
+        animator.SetBool("OnGround", isGrounded);
+        if (!isGrounded)
+        {
+            animator.SetFloat("Jump", rigidbody.velocity.y);
+        }
+
+        animator.speed = 1f;
 
     }
     
