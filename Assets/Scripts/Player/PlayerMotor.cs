@@ -14,6 +14,7 @@ public class PlayerMotor : MonoBehaviour
 
     private Rigidbody rigidbody;
     private PlayerAnimationController animationController;
+    private float origGroundCheckDistane;
     private bool isGrounded = false;
     private float turnAmount;
     private float forwardAmount;
@@ -46,10 +47,10 @@ public class PlayerMotor : MonoBehaviour
         }
         else
         {
-            //HandleAirbourneMovement();
+            HandleAirbourneMovement();
         }
 
-        animationController.UpdateAnimator(forwardAmount, turnAmount, isGrounded, rigidbody);
+        animationController.UpdateAnimator(forwardAmount, turnAmount, isGrounded, rigidbody, applyRootMotion);
     }
 
     private void HandleGroundMovement(bool jumping)
@@ -61,17 +62,31 @@ public class PlayerMotor : MonoBehaviour
         }
     }
 
+    private void HandleAirbourneMovement()
+    {
+        Vector3 extraGravityForce = (Physics.gravity * gravityMultiplier) - Physics.gravity;
+        rigidbody.AddForce(extraGravityForce);
+
+        groundCheckDistance = rigidbody.velocity.y < 0 ? origGroundCheckDistane : 0.01f;
+    }
+
+
     private void CheckGroundStatus()
     {
         RaycastHit hit;
-
-        //Debug.DrawLine(transform.position + (Vector3.up * 0.1f), transform.position + (Vector3.up * 0.1f) + (Vector3.down * groundCheckDistance), Color.green, 2, false);
 
         if (Physics.Raycast(transform.position + (Vector3.up * 0.1f), Vector3.down, out hit, groundCheckDistance))
         {
             groundNormal = hit.normal;
             isGrounded = true;
+            applyRootMotion = true;
             Debug.Log("ïsgrounded");
+        }
+        else
+        {
+            isGrounded = false;
+            groundNormal = Vector3.up;
+            applyRootMotion = false;
         }
     }
 }
