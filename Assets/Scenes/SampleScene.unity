@@ -646,6 +646,10 @@ Prefab:
       propertyPath: m_Constraints
       value: 80
       objectReference: {fileID: 0}
+    - target: {fileID: 149790, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11444856, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 2}
     - {fileID: 11469404, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 2}
@@ -679,7 +683,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movingTurnSpeed: 360
   stationaryTurnSpeed: 180
-  jumpPower: 12
+  jumpPower: 8
   gravityMultiplier: 2
   movementSpeedMultiplier: 1
   groundCheckDistance: 0.2
@@ -699,7 +703,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 995fcc455ec65e34991f8f916fc9ac48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationSpeedMultiplier: 1
+  animationSpeedMultiplier: 1.5
   animator: {fileID: 1954017190}
 --- !u!1 &2091751287
 GameObject:

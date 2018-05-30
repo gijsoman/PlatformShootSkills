@@ -8,9 +8,9 @@ public class PlayerAnimationController : MonoBehaviour
     [SerializeField] private float animationSpeedMultiplier;
 
     public Animator animator;
-    private PlayerMotor playerMotor;
 
-    private bool grounded = true;
+    private PlayerMotor playerMotor;
+    private bool isGrounded = true;
     private float moveSpeedMultiplier;
     private Rigidbody rigidbody;
 
@@ -24,7 +24,7 @@ public class PlayerAnimationController : MonoBehaviour
     {
         rigidbody = _rigidbody;
         moveSpeedMultiplier = _moveSpeedMultiplier;
-        grounded = _isGrounded;
+        isGrounded = _isGrounded;
         animator.SetFloat("Forward", _forwardAmount, 0.1f, Time.deltaTime);
         animator.SetFloat("Turn", _turnAmount, 0.1f, Time.deltaTime);
         animator.SetBool("OnGround", _isGrounded);
@@ -50,7 +50,7 @@ public class PlayerAnimationController : MonoBehaviour
 
     public void OnAnimatorMove()
     {
-        if (grounded && Time.deltaTime > 0)
+        if (isGrounded && Time.deltaTime > 0)
         {
             Vector3 v = (animator.deltaPosition * moveSpeedMultiplier) / Time.deltaTime;
 

@@ -10,7 +10,7 @@ public class PlayerMotor : MonoBehaviour
     [SerializeField] private float jumpPower = 12f;
     [Range(1f, 4f)][SerializeField] private float gravityMultiplier = 2f;
     [SerializeField] private float movementSpeedMultiplier = 1f;
-    [SerializeField] private float groundCheckDistance = 0.1f;
+    [SerializeField] private float groundCheckDistance = 0.2f;
 
     private Rigidbody rigidbody;
     private PlayerAnimationController animationController;
@@ -30,37 +30,36 @@ public class PlayerMotor : MonoBehaviour
         origGroundCheckDistane = groundCheckDistance;
     }
 
-    public void Move(Vector3 moveDirection, bool jumping)
+    public void Move(Vector3 _moveDirection, bool _jumping)
     {
-        if (moveDirection.magnitude > 1f)
+        if (_moveDirection.magnitude > 1f)
         {
-            moveDirection.Normalize();
+            _moveDirection.Normalize();
         }
 
-        moveDirection = transform.InverseTransformDirection(moveDirection);
+        _moveDirection = transform.InverseTransformDirection(_moveDirection);
         CheckGroundStatus();
-
-        moveDirection = Vector3.ProjectOnPlane(moveDirection, groundNormal);
-        turnAmount = Mathf.Atan2(moveDirection.x, moveDirection.z);
-        forwardAmount = moveDirection.z;
+        _moveDirection = Vector3.ProjectOnPlane(_moveDirection, groundNormal);
+        turnAmount = Mathf.Atan2(_moveDirection.x, _moveDirection.z);
+        forwardAmount = _moveDirection.z;
 
         ApplyExtraTurnRotation();
 
         if (isGrounded)
         {
-            HandleGroundMovement(jumping);
+            HandleGroundMovement(_jumping);
         }
         else
         {
             HandleAirbourneMovement();
         }
 
-        animationController.UpdateAnimator(moveDirection, forwardAmount, turnAmount, isGrounded, rigidbody, movementSpeedMultiplier);
+        animationController.UpdateAnimator(_moveDirection, forwardAmount, turnAmount, isGrounded, rigidbody, movementSpeedMultiplier);
     }
 
-    private void HandleGroundMovement(bool jumping)
+    private void HandleGroundMovement(bool _jumping)
     {
-        if (jumping && animationController.animator.GetCurrentAnimatorStateInfo(0).IsName("Grounded"))
+        if (_jumping && animationController.animator.GetCurrentAnimatorStateInfo(0).IsName("Grounded"))
         {
             rigidbody.velocity = new Vector3(rigidbody.velocity.x, jumpPower, rigidbody.velocity.z);
             isGrounded = false;
