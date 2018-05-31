@@ -145,6 +145,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseSensitivity: 10
   invertAxis: 0
+  distanceFromTarget: 1
+  target: {fileID: 804336031}
+  minZoom: 1
+  maxZoom: 10
+  zoomSpeed: 1
+  pitchMin: -40
+  pitchMax: 85
+  rotationSmoothTime: 0.05
 --- !u!81 &81338061
 AudioListener:
   m_ObjectHideFlags: 0
@@ -528,6 +536,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &804336030
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 804336031}
+  m_Layer: 0
+  m_Name: TargetPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &804336031
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 804336030}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.214, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1954017191}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1531995941
 GameObject:
   m_ObjectHideFlags: 0
@@ -705,6 +741,10 @@ MonoBehaviour:
 Animator:
   m_PrefabParentObject: {fileID: 9579096, guid: 7737647c22c1fc64a88d5cd030c352ce,
     type: 2}
+  m_PrefabInternal: {fileID: 1782584715}
+--- !u!4 &1954017191 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 408730, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 2}
   m_PrefabInternal: {fileID: 1782584715}
 --- !u!114 &1954017192
 MonoBehaviour:

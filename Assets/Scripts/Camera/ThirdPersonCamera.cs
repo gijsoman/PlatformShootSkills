@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ThirdPersonCamera : MonoBehaviour
 {
@@ -13,12 +11,26 @@ public class ThirdPersonCamera : MonoBehaviour
     [SerializeField] private float zoomSpeed = 1;
     [SerializeField] private float pitchMin = 40;
     [SerializeField] private float pitchMax = 85;
+    [SerializeField] private float rotationSmoothTime = 0.12f;
+    [SerializeField] private bool hideCursor = false;
 
     private float zoom = 1f;
     private float yaw;
     private float pitch;
 
-    void Update()
+    private Vector3 currentRotation;
+    private Vector3 rotationVelocity;
+
+    private void Start()
+    {
+        if (hideCursor)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+    }
+
+    private void LateUpdate()
     {
         zoom -= Input.GetAxis("Mouse ScrollWheel") * zoomSpeed;
         zoom = Mathf.Clamp(zoom, minZoom, maxZoom);
@@ -35,9 +47,9 @@ public class ThirdPersonCamera : MonoBehaviour
         }
 
         pitch = Mathf.Clamp(pitch, pitchMin, pitchMax);
+        currentRotation = Vector3.SmoothDamp(currentRotation, new Vector3(pitch, yaw), ref rotationVelocity, rotationSmoothTime);
 
-        Vector3 targetRotation = new Vector3(pitch, yaw);
-        transform.eulerAngles = targetRotation;
+        transform.eulerAngles = currentRotation;
 
         transform.position = target.position - transform.forward * distanceFromTarget * zoom;
 	}
