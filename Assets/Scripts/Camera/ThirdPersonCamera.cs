@@ -10,6 +10,7 @@ public class ThirdPersonCamera : MonoBehaviour
     [SerializeField] private Transform target;
     [SerializeField] private float minZoom = 1;
     [SerializeField] private float maxZoom = 10;
+    [SerializeField] private float zoomSpeed = 1;
 
     private float zoom = 10f;
     private float yaw;
@@ -17,7 +18,7 @@ public class ThirdPersonCamera : MonoBehaviour
 
     void Update()
     {
-        zoom -= Input.GetAxis("Mouse ScrollWheel");
+        zoom -= Input.GetAxis("Mouse ScrollWheel") * zoomSpeed;
         zoom = Mathf.Clamp(zoom, minZoom, maxZoom);
 
         if (!invertAxis)
