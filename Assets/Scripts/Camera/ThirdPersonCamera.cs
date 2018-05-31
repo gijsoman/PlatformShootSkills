@@ -11,8 +11,10 @@ public class ThirdPersonCamera : MonoBehaviour
     [SerializeField] private float minZoom = 1;
     [SerializeField] private float maxZoom = 10;
     [SerializeField] private float zoomSpeed = 1;
+    [SerializeField] private float pitchMin = 40;
+    [SerializeField] private float pitchMax = 85;
 
-    private float zoom = 10f;
+    private float zoom = 1f;
     private float yaw;
     private float pitch;
 
@@ -31,6 +33,8 @@ public class ThirdPersonCamera : MonoBehaviour
             yaw -= Input.GetAxis("Mouse X") * mouseSensitivity;
             pitch += Input.GetAxis("Mouse Y") * mouseSensitivity;
         }
+
+        pitch = Mathf.Clamp(pitch, pitchMin, pitchMax);
 
         Vector3 targetRotation = new Vector3(pitch, yaw);
         transform.eulerAngles = targetRotation;
