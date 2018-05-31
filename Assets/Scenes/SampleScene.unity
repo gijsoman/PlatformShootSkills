@@ -153,6 +153,7 @@ MonoBehaviour:
   pitchMin: -40
   pitchMax: 85
   rotationSmoothTime: 0.05
+  hideCursor: 1
 --- !u!81 &81338061
 AudioListener:
   m_ObjectHideFlags: 0
