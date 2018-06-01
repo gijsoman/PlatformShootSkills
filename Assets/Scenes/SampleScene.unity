@@ -146,9 +146,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 804336031}
-  distanceFromTarget: 1
   currentRotation: {x: 0, y: 0, z: 0}
   sameRotationAsCharacter: 1
+  distanceFromTarget: 1
 --- !u!81 &81338061
 AudioListener:
   m_ObjectHideFlags: 0
