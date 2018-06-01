@@ -9,9 +9,9 @@ public class ThirdPersonCameraZoom : MonoBehaviour
 
     private float currentZoom;
 
-    private ThirdPersonCamera thirdPersonCamera;
-
     private float distanceFromTarget;
+
+    private ThirdPersonCamera thirdPersonCamera;
 
     private void Start()
     {
