@@ -7,6 +7,7 @@ public class ThirdPersonCameraZoom : MonoBehaviour
     [SerializeField] private float maximumZoom = 10f;
     [SerializeField] private float zoomSpeed = 1f;
 
+    private float currentZoom;
     private ThirdPersonCamera thirdPersonCamera;
 
     private void Start()
@@ -14,4 +15,11 @@ public class ThirdPersonCameraZoom : MonoBehaviour
         thirdPersonCamera = GetComponent<ThirdPersonCamera>();
     }
 
+    private void LateUpdate()
+    {
+        currentZoom -= Input.GetAxis("Mouse ScrollWheel") * zoomSpeed;
+        currentZoom = Mathf.Clamp(currentZoom, minimumZoom, maximumZoom);
+
+        
+    }
 }
