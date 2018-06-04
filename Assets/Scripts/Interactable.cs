@@ -6,12 +6,11 @@ using UnityEngine;
 public class Interactable : MonoBehaviour
 {
     [SerializeField] private float radius = 3f;
-    [SerializeField] private Transform placeOfInteraction;
-    [SerializeField] private Transform player;
+    [SerializeField] private Collider interactionCollider;
 
     private bool hasInteracted = false;
 
-    private void Interact()
+    public virtual void Interact()
     {
         if (!hasInteracted)
         {
@@ -19,19 +18,14 @@ public class Interactable : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        float distance = Vector3.Distance(placeOfInteraction.position, player.position);
-        if (distance <= radius)
-        {
-            Interact();
-            hasInteracted = true;
-        }
+        Interact();
+        hasInteracted = true;
     }
 
-    private void OnDrawGizmos()
+    private void OnTriggerExit(Collider other)
     {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(placeOfInteraction.position, radius);
+        hasInteracted = false;
     }
 }
