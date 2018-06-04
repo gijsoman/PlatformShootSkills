@@ -7,6 +7,7 @@ public class FocusInteractable : MonoBehaviour
     [SerializeField] private float sphereCastRadius = 0.5f;
     [SerializeField] private float maxRayDistance = 100f;
     [SerializeField] private LayerMask layerMask;
+    [SerializeField] private Transform rayCastOrigin;
 
     private float currentHitDistance;
 
@@ -16,10 +17,11 @@ public class FocusInteractable : MonoBehaviour
     {
         currentHitDistance = maxRayDistance;
         hitObjects.Clear();
-        RaycastHit[] hits = Physics.SphereCastAll(transform.position, sphereCastRadius, transform.forward , maxRayDistance, layerMask);
+        RaycastHit[] hits = Physics.SphereCastAll(rayCastOrigin.position, sphereCastRadius, transform.forward, maxRayDistance, layerMask);
         foreach (RaycastHit hit in hits)
         {
             hitObjects.Add(hit.transform.gameObject);
+            Debug.Log(hit.transform.name);
             currentHitDistance = hit.distance;
         }
 	}
@@ -27,7 +29,7 @@ public class FocusInteractable : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Debug.DrawLine(transform.position, transform.position + Vector3.forward * currentHitDistance);
-        Gizmos.DrawWireSphere(transform.position + Vector3.forward * currentHitDistance, sphereCastRadius);
+        Debug.DrawLine(rayCastOrigin.position, rayCastOrigin.position + transform.forward * currentHitDistance);
+        Gizmos.DrawWireSphere(rayCastOrigin.position + transform.forward * currentHitDistance, sphereCastRadius);
     }
 }
