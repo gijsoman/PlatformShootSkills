@@ -5,16 +5,16 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-    [SerializeField] private Collider interactionCollider;
+    public bool isFocused = false;
 
-    public bool isFocus;
+    [SerializeField] private Collider interactionCollider;
 
     private bool mayInteract = false;
     private bool hasInteracted = false;
 
     public virtual void Interact()
     {
-        //This method is meant to be overwritten/
+        //This method is meant to be overwritten.
         if (!hasInteracted)
         {
             Debug.Log("Interacting");
