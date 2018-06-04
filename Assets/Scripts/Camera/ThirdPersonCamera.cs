@@ -2,55 +2,22 @@
 
 public class ThirdPersonCamera : MonoBehaviour
 {
-    [SerializeField] private float mouseSensitivity = 10f;
-    [SerializeField] private bool invertAxis = false;
-    [SerializeField] private float distanceFromTarget = 1f;
     [SerializeField] private Transform target;
-    [SerializeField] private float minZoom = 1;
-    [SerializeField] private float maxZoom = 10;
-    [SerializeField] private float zoomSpeed = 1;
-    [SerializeField] private float pitchMin = 40;
-    [SerializeField] private float pitchMax = 85;
-    [SerializeField] private float rotationSmoothTime = 0.12f;
-    [SerializeField] private bool hideCursor = false;
 
-    private float zoom = 1f;
-    private float yaw;
-    private float pitch;
+    [HideInInspector] public Vector3 currentRotation;
 
-    private Vector3 currentRotation;
-    private Vector3 rotationVelocity;
+    [HideInInspector] public bool sameRotationAsCharacter = true;
 
-    private void Start()
-    {
-        if (hideCursor)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
-    }
+    public float distanceFromTarget = 1f;
 
     private void LateUpdate()
     {
-        zoom -= Input.GetAxis("Mouse ScrollWheel") * zoomSpeed;
-        zoom = Mathf.Clamp(zoom, minZoom, maxZoom);
-
-        if (!invertAxis)
+        if (sameRotationAsCharacter)
         {
-            yaw += Input.GetAxis("Mouse X") * mouseSensitivity;
-            pitch -= Input.GetAxis("Mouse Y") * mouseSensitivity;
+            currentRotation = target.eulerAngles;
         }
-        else
-        {
-            yaw -= Input.GetAxis("Mouse X") * mouseSensitivity;
-            pitch += Input.GetAxis("Mouse Y") * mouseSensitivity;
-        }
-
-        pitch = Mathf.Clamp(pitch, pitchMin, pitchMax);
-        currentRotation = Vector3.SmoothDamp(currentRotation, new Vector3(pitch, yaw), ref rotationVelocity, rotationSmoothTime);
 
         transform.eulerAngles = currentRotation;
-
-        transform.position = target.position - transform.forward * distanceFromTarget * zoom;
+        transform.position = target.position - transform.forward * distanceFromTarget;
 	}
 }
