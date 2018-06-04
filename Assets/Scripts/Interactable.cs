@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-    [SerializeField] private float radius = 3f;
     [SerializeField] private Collider interactionCollider;
 
     private bool hasInteracted = false;
