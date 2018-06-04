@@ -7,6 +7,7 @@ public class Interactable : MonoBehaviour
 {
     [SerializeField] private Collider interactionCollider;
 
+    private bool mayInteract = false;
     private bool hasInteracted = false;
 
     public virtual void Interact()
@@ -18,14 +19,22 @@ public class Interactable : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E) && mayInteract)
+        {
+            Interact();
+            hasInteracted = true;
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        Interact();
-        hasInteracted = true;
+        mayInteract = true;
     }
 
     private void OnTriggerExit(Collider other)
     {
-        hasInteracted = false;
+        mayInteract = false;
     }
 }

@@ -21,7 +21,7 @@ public class Inventory : MonoBehaviour
 
     public bool Add(Item _item)
     {
-        if (Items.Count >= 20)
+        if (Items.Count >= space)
         {
             Debug.Log("Not enough room in inventory");
             return false;
