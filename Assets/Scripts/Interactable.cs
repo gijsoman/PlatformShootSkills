@@ -7,6 +7,8 @@ public class Interactable : MonoBehaviour
 {
     [SerializeField] private Collider interactionCollider;
 
+    public bool isFocus;
+
     private bool mayInteract = false;
     private bool hasInteracted = false;
 
