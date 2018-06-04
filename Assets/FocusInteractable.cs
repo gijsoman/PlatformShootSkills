@@ -11,6 +11,8 @@ public class FocusInteractable : MonoBehaviour
 
     private float currentHitDistance;
 
+    private GameObject currentlyFocused;
+
     private List<GameObject> hitObjects = new List<GameObject>();
 
 	private void Update ()
@@ -21,10 +23,18 @@ public class FocusInteractable : MonoBehaviour
         foreach (RaycastHit hit in hits)
         {
             hitObjects.Add(hit.transform.gameObject);
+            //Clean up when done
             Debug.Log(hit.transform.name);
             currentHitDistance = hit.distance;
         }
+
+        SetFocus();
 	}
+
+    private void SetFocus()
+    {
+        //set the currently focused gameobject to the closest object in the hit objects.
+    }
 
     private void OnDrawGizmos()
     {
