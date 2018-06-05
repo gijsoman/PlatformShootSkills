@@ -23,14 +23,14 @@ public class Interactable : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && mayInteract)
+        if (Input.GetKeyDown(KeyCode.E) && mayInteract && isFocused)
         {
             Interact();
             hasInteracted = true;
         }
         if (isFocused)
         {
-            Debug.Log("I am focused");
+            Debug.Log(name + " | " + "is am focused");
         }
     }
 
