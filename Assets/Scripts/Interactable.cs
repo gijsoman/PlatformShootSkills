@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-    public bool isFocused = false;
+    public bool Focused = false;
 
     private bool hasInteracted = false;
 
@@ -18,17 +18,26 @@ public class Interactable : MonoBehaviour
         }
     }
 
+    public virtual bool IsFocused()
+    {
+        if (Focused)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && isFocused)
+        if (Input.GetKeyDown(KeyCode.E) && Focused)
         {
             Interact();
             hasInteracted = true;
         }
-        if (isFocused)
-        {
-            Debug.Log(name + " | " + "is am focused");
-        }
+        IsFocused();
     }
 
 }
