@@ -11,53 +11,49 @@ public class FocusInteractable : MonoBehaviour
 
     private float lowestDistance = Mathf.Infinity;
 
+    private bool allowedToDefocus = false;
+    private bool allowedToFocus = true;
+
     private float currentHitDistance;
 
-    private GameObject currentlyFocused;
+    private GameObject currentlyFocusedObject;
 
 	private void Update ()
     {
         currentHitDistance = maxRayDistance;
-        RaycastHit[] hits = Physics.SphereCastAll(rayCastOrigin.position, sphereCastRadius, transform.forward, maxRayDistance, layerMask);
+        RaycastHit[] hits = Physics.SphereCastAll(rayCastOrigin.position, sphereCastRadius, transform.forward, maxRayDistance, layerMask);  
         foreach (RaycastHit hit in hits)
         {
-            currentHitDistance = hit.distance;
-            if (currentHitDistance < lowestDistance)
-            {
-                lowestDistance = hit.distance;
-                DeFocus();
-                currentlyFocused = hit.transform.gameObject;
-                SetFocus();
-                Debug.Log(currentlyFocused.name);
-            }
-        }
 
-        lowestDistance = Mathf.Infinity;
+        }
 	}
 
     private void SetFocus()
     {
         //set the currently focused gameobject to the closest object in the hit objects.
-        if (currentlyFocused != null)
+        if (currentlyFocusedObject != null)
         {
             Interactable interactable;
-            if (interactable = currentlyFocused.GetComponent<Interactable>())
+            if (interactable = currentlyFocusedObject.GetComponent<Interactable>())
             {
                 interactable.isFocused = true;
             }
         }
+
+        allowedToDefocus = true;
     }
 
     private void DeFocus()
     {
-        if (currentlyFocused != null)
+        if (currentlyFocusedObject != null)
         {
             Interactable interactable;
-            if (interactable = currentlyFocused.GetComponent<Interactable>())
+            if (interactable = currentlyFocusedObject.GetComponent<Interactable>())
             {
                 interactable.isFocused = false;
             }
         }
+        allowedToDefocus = false;
     }
 
     private void OnDrawGizmos()

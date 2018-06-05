@@ -34,6 +34,11 @@ public class Interactable : MonoBehaviour
         }
     }
 
+    private void ChangeMaterial()
+    {
+
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         mayInteract = true;
