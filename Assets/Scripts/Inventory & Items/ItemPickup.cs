@@ -20,16 +20,4 @@ public class ItemPickup : Interactable
             Destroy(gameObject);
         }
     }
-
-    private void ChangeMaterial(Material _focussedMaterial, Material _idleMaterial)
-    {
-        if (isFocused)
-        {
-            GetComponent<Renderer>().material = _focussedMaterial;
-        }
-        else
-        {
-            GetComponent<Renderer>().material = _idleMaterial;
-        }
-    }
 }
