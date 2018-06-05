@@ -28,6 +28,10 @@ public class Interactable : MonoBehaviour
             Interact();
             hasInteracted = true;
         }
+        if (isFocused)
+        {
+            Debug.Log("I am focused");
+        }
     }
 
     private void OnTriggerEnter(Collider other)

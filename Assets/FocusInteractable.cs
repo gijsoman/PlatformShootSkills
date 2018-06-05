@@ -9,24 +9,33 @@ public class FocusInteractable : MonoBehaviour
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private Transform rayCastOrigin;
 
+    private float lowestDistance = Mathf.Infinity;
+
     private float currentHitDistance;
 
     private GameObject currentlyFocused;
 
-    private List<GameObject> hitObjects = new List<GameObject>();
+    //private List<GameObject> hitObjects = new List<GameObject>();
 
 	private void Update ()
     {
         currentHitDistance = maxRayDistance;
-        hitObjects.Clear();
+        //hitObjects.Clear();
         RaycastHit[] hits = Physics.SphereCastAll(rayCastOrigin.position, sphereCastRadius, transform.forward, maxRayDistance, layerMask);
         foreach (RaycastHit hit in hits)
         {
-            hitObjects.Add(hit.transform.gameObject);
-            //Clean up when done
-            Debug.Log(hit.transform.name);
+            //hitObjects.Add(hit.transform.gameObject);
             currentHitDistance = hit.distance;
+            if (currentHitDistance < lowestDistance)
+            {
+                lowestDistance = hit.distance;
+                currentlyFocused = hit.transform.gameObject;
+                Debug.Log(currentlyFocused.name);
+            }
         }
+
+        lowestDistance = Mathf.Infinity;
+        //get the object with the lowest hit distance in the array.
 
         SetFocus();
 	}
@@ -34,6 +43,19 @@ public class FocusInteractable : MonoBehaviour
     private void SetFocus()
     {
         //set the currently focused gameobject to the closest object in the hit objects.
+        if (currentlyFocused != null)
+        {
+            Interactable interactable;
+            if (interactable = currentlyFocused.GetComponent<Interactable>())
+            {
+                interactable.isFocused = true;
+            }
+        }
+    }
+
+    private void DeFocus()
+    {
+
     }
 
     private void OnDrawGizmos()
