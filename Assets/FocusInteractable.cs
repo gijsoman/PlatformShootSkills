@@ -33,10 +33,11 @@ public class FocusInteractable : MonoBehaviour
             if (currentHitDistance < shortestDistance)
             {
                 shortestDistance = currentHitDistance;
+                if (closestObject != null)
+                {
+                    closestObject.isFocused = false;
+                }
                 closestObject = hit.transform.gameObject.GetComponent<Interactable>();
-            }
-            if (closestObject != null)
-            {
                 closestObject.isFocused = true;
             }
         }

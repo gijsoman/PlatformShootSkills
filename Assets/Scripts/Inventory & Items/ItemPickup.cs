@@ -3,6 +3,8 @@
 public class ItemPickup : Interactable
 {
     [SerializeField] private Item item;
+    [SerializeField] private Material focussedMaterial;
+    [SerializeField] private Material idleMaterial;
 
     public override void Interact()
     {
@@ -16,6 +18,18 @@ public class ItemPickup : Interactable
         if (wasPickedUp)
         {
             Destroy(gameObject);
+        }
+    }
+
+    private void ChangeMaterial(Material _focussedMaterial, Material _idleMaterial)
+    {
+        if (isFocused)
+        {
+            GetComponent<Renderer>().material = _focussedMaterial;
+        }
+        else
+        {
+            GetComponent<Renderer>().material = _idleMaterial;
         }
     }
 }
