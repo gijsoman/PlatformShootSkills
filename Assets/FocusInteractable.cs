@@ -11,18 +11,37 @@ public class FocusInteractable : MonoBehaviour
 
     private float currentHitDistance;
 
-    private GameObject currentlyFocusedObject;
+    private float shortestDistance = Mathf.Infinity;
+
+    private Interactable closestObject;
 
 	private void Update ()
     {
+        if (closestObject != null)
+        {
+            closestObject.isFocused = false;
+            closestObject = null;
+        }
+
         currentHitDistance = maxRayDistance;
+
         RaycastHit[] hits = Physics.SphereCastAll(rayCastOrigin.position, sphereCastRadius, transform.forward, maxRayDistance, layerMask);  
         foreach (RaycastHit hit in hits)
         {
-
+            currentHitDistance = hit.distance;
+            Debug.DrawLine(rayCastOrigin.position, hit.transform.position, Color.red);
+            if (currentHitDistance < shortestDistance)
+            {
+                shortestDistance = currentHitDistance;
+                closestObject = hit.transform.gameObject.GetComponent<Interactable>();
+            }
+            if (closestObject != null)
+            {
+                closestObject.isFocused = true;
+            }
         }
-	}
-
+        shortestDistance = Mathf.Infinity;
+    }
 
     private void OnDrawGizmos()
     {

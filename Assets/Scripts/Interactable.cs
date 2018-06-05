@@ -7,9 +7,6 @@ public class Interactable : MonoBehaviour
 {
     public bool isFocused = false;
 
-    [SerializeField] private Collider interactionCollider;
-
-    private bool mayInteract = false;
     private bool hasInteracted = false;
 
     public virtual void Interact()
@@ -23,7 +20,7 @@ public class Interactable : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && mayInteract && isFocused)
+        if (Input.GetKeyDown(KeyCode.E) && isFocused)
         {
             Interact();
             hasInteracted = true;
@@ -34,18 +31,4 @@ public class Interactable : MonoBehaviour
         }
     }
 
-    private void ChangeMaterial()
-    {
-
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        mayInteract = true;
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        mayInteract = false;
-    }
 }
