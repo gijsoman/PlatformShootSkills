@@ -9,11 +9,6 @@ public class FocusInteractable : MonoBehaviour
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private Transform rayCastOrigin;
 
-    private float lowestDistance = Mathf.Infinity;
-
-    private bool allowedToDefocus = false;
-    private bool allowedToFocus = true;
-
     private float currentHitDistance;
 
     private GameObject currentlyFocusedObject;
@@ -28,33 +23,6 @@ public class FocusInteractable : MonoBehaviour
         }
 	}
 
-    private void SetFocus()
-    {
-        //set the currently focused gameobject to the closest object in the hit objects.
-        if (currentlyFocusedObject != null)
-        {
-            Interactable interactable;
-            if (interactable = currentlyFocusedObject.GetComponent<Interactable>())
-            {
-                interactable.isFocused = true;
-            }
-        }
-
-        allowedToDefocus = true;
-    }
-
-    private void DeFocus()
-    {
-        if (currentlyFocusedObject != null)
-        {
-            Interactable interactable;
-            if (interactable = currentlyFocusedObject.GetComponent<Interactable>())
-            {
-                interactable.isFocused = false;
-            }
-        }
-        allowedToDefocus = false;
-    }
 
     private void OnDrawGizmos()
     {
