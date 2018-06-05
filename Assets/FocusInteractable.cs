@@ -19,7 +19,7 @@ public class FocusInteractable : MonoBehaviour
     {
         if (closestObject != null)
         {
-            closestObject.isFocused = false;
+            closestObject.Focused = false;
             closestObject = null;
         }
 
@@ -35,10 +35,12 @@ public class FocusInteractable : MonoBehaviour
                 shortestDistance = currentHitDistance;
                 if (closestObject != null)
                 {
-                    closestObject.isFocused = false;
+                    closestObject.Focused = false;
                 }
-                closestObject = hit.transform.gameObject.GetComponent<Interactable>();
-                closestObject.isFocused = true;
+                if(closestObject = hit.transform.gameObject.GetComponent<Interactable>())
+                {
+                    closestObject.Focused = true;
+                }
             }
         }
         shortestDistance = Mathf.Infinity;

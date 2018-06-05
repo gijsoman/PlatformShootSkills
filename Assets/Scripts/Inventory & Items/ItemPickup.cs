@@ -14,7 +14,7 @@ public class ItemPickup : Interactable
 
     public override bool IsFocused()
     {
-        if (isFocused)
+        if (Focused)
         {
             GetComponent<Renderer>().material = focussedMaterial;
             return true;
