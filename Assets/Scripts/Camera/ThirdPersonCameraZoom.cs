@@ -16,7 +16,7 @@ public class ThirdPersonCameraZoom : MonoBehaviour
     private void Start()
     {
         thirdPersonCamera = GetComponent<ThirdPersonCamera>();
-        distanceFromTarget = thirdPersonCamera.distanceFromTarget;
+        distanceFromTarget = thirdPersonCamera.DistanceFromTarget;
     }
 
     private void Update()
@@ -24,6 +24,6 @@ public class ThirdPersonCameraZoom : MonoBehaviour
         currentZoom -= Input.GetAxis("Mouse ScrollWheel") * zoomSpeed;
         currentZoom = Mathf.Clamp(currentZoom, minimumZoom, maximumZoom);
 
-        thirdPersonCamera.distanceFromTarget = distanceFromTarget * currentZoom;
+        thirdPersonCamera.DistanceFromTarget = distanceFromTarget * currentZoom;
     }
 }

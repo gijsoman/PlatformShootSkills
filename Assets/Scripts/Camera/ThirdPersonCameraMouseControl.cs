@@ -26,7 +26,7 @@ public class ThirdPersonCameraMouseControl : MonoBehaviour
             Cursor.visible = false;
         }
         thirdPersonCamera = GetComponent<ThirdPersonCamera>();
-        thirdPersonCamera.sameRotationAsCharacter = false;
+        thirdPersonCamera.SameRotationAsCharacter = false;
     }
 
     void Update ()
@@ -45,6 +45,6 @@ public class ThirdPersonCameraMouseControl : MonoBehaviour
         pitch = Mathf.Clamp(pitch, pitchMin, pitchMax);
         currentRotation = Vector3.SmoothDamp(currentRotation, new Vector3(pitch, yaw), ref rotationVelocity, rotationSmoothTime);
 
-        thirdPersonCamera.currentRotation = currentRotation;
+        thirdPersonCamera.CurrentRotation = currentRotation;
     }
 }

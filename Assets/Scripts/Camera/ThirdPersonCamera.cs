@@ -2,22 +2,20 @@
 
 public class ThirdPersonCamera : MonoBehaviour
 {
+    public bool SameRotationAsCharacter { get; set; }
+    public float DistanceFromTarget = 1f;
+    public Vector3 CurrentRotation { get; set; }
+
     [SerializeField] private Transform target;
-
-    [HideInInspector] public Vector3 currentRotation;
-
-    [HideInInspector] public bool sameRotationAsCharacter = true;
-
-    public float distanceFromTarget = 1f;
 
     private void LateUpdate()
     {
-        if (sameRotationAsCharacter)
+        if (SameRotationAsCharacter)
         {
-            currentRotation = target.eulerAngles;
+            CurrentRotation = target.eulerAngles;
         }
 
-        transform.eulerAngles = currentRotation;
-        transform.position = target.position - transform.forward * distanceFromTarget;
+        transform.eulerAngles = CurrentRotation;
+        transform.position = target.position - transform.forward * DistanceFromTarget;
 	}
 }

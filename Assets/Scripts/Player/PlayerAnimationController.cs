@@ -1,22 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
 public class PlayerAnimationController : MonoBehaviour
 {
+    public Animator PlayerAnimator;
+
     [SerializeField] private float animationSpeedMultiplier;
 
-    public Animator animator;
-
     private PlayerMotor playerMotor;
-    private bool isGrounded = true;
-    private float moveSpeedMultiplier;
     private Rigidbody rigidbody;
+
+    private bool isGrounded;
+    private float moveSpeedMultiplier;
 
     private void Start()
     {
-        animator = GetComponent<Animator>();
+        PlayerAnimator = GetComponent<Animator>();
         playerMotor = GetComponent<PlayerMotor>();
     }
 
@@ -25,38 +24,39 @@ public class PlayerAnimationController : MonoBehaviour
         rigidbody = _rigidbody;
         moveSpeedMultiplier = _moveSpeedMultiplier;
         isGrounded = _isGrounded;
-        animator.SetFloat("Forward", _forwardAmount, 0.1f, Time.deltaTime);
-        animator.SetFloat("Turn", _turnAmount, 0.1f, Time.deltaTime);
-        animator.SetBool("OnGround", _isGrounded);
+
+        PlayerAnimator.SetFloat("Forward", _forwardAmount, 0.1f, Time.deltaTime);
+        PlayerAnimator.SetFloat("Turn", _turnAmount, 0.1f, Time.deltaTime);
+        PlayerAnimator.SetBool("OnGround", _isGrounded);
+
         if (!_isGrounded)
         {
-            animator.SetFloat("Jump", _rigidbody.velocity.y);
+            PlayerAnimator.SetFloat("Jump", _rigidbody.velocity.y);
         }
 
         if (_isGrounded && _move.magnitude > 0)
         {
-            animator.speed = animationSpeedMultiplier;
+            PlayerAnimator.speed = animationSpeedMultiplier;
         }
         else
         {
-            animator.speed = 1f;
+            PlayerAnimator.speed = 1f;
         }
     }
 
     public void UpdateRootMotion(bool _applyRootMotion)
     {
-        animator.applyRootMotion = _applyRootMotion;
+        PlayerAnimator.applyRootMotion = _applyRootMotion;
     }
 
     public void OnAnimatorMove()
     {
         if (isGrounded && Time.deltaTime > 0)
         {
-            Vector3 v = (animator.deltaPosition * moveSpeedMultiplier) / Time.deltaTime;
+            Vector3 v = (PlayerAnimator.deltaPosition * moveSpeedMultiplier) / Time.deltaTime;
 
             v.y = rigidbody.velocity.y;
             rigidbody.velocity = v;
         }
     }
-
 }
