@@ -5,21 +5,23 @@ public class PlayerController : MonoBehaviour
 {
     private PlayerMotor motor;
     private Transform camera;
+
+    private bool jumping;
     private Vector3 cameraForward;
     private Vector3 move;
-    private bool jumping = false;
 
     private void Start()
     {
         motor = GetComponent<PlayerMotor>();
+
         if (Camera.main != null)
         {
             camera = Camera.main.transform;
         }
+
         else
         {
-            Debug.LogWarning(
-                "Warning: no main camera found. Third person character needs a Camera tagged \"MainCamera\", for camera-relative controls. Now using world-relative controls", gameObject);
+            Debug.LogWarning("Warning: no main camera found. Third person character needs a Camera tagged \"MainCamera\", for camera-relative controls. Now using world-relative controls", gameObject);
         }
     }
 

@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
@@ -16,16 +15,18 @@ public class Inventory : MonoBehaviour
         instance = this;
     }
     #endregion
-    public int space = 20;
+
+    public int Space = 20;
     public List<Item> Items = new List<Item>();
 
     public bool Add(Item _item)
     {
-        if (Items.Count >= space)
+        if (Items.Count >= Space)
         {
             Debug.Log("Not enough room in inventory");
             return false;
         }
+
         Items.Add(_item);
         return true;
     }

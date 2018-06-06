@@ -14,12 +14,13 @@ public class PlayerMotor : MonoBehaviour
 
     private Rigidbody rigidbody;
     private PlayerAnimationController animationController;
+
+    private bool isGrounded;
+    private bool applyRootMotion;
     private float origGroundCheckDistane;
-    private bool isGrounded = true;
     private float turnAmount;
     private float forwardAmount;
     private Vector3 groundNormal;
-    private bool applyRootMotion = false;
 
     private void Start()
     {
@@ -59,7 +60,7 @@ public class PlayerMotor : MonoBehaviour
 
     private void HandleGroundMovement(bool _jumping)
     {
-        if (_jumping && animationController.animator.GetCurrentAnimatorStateInfo(0).IsName("Grounded"))
+        if (_jumping && animationController.PlayerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Grounded"))
         {
             rigidbody.velocity = new Vector3(rigidbody.velocity.x, jumpPower, rigidbody.velocity.z);
             isGrounded = false;
