@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class FocusInteractable : MonoBehaviour
 {
@@ -9,11 +7,10 @@ public class FocusInteractable : MonoBehaviour
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private Transform rayCastOrigin;
 
-    private float currentHitDistance;
-
-    private float shortestDistance = Mathf.Infinity;
-
     private Interactable closestObject;
+
+    private float currentHitDistance;
+    private float shortestDistance = Mathf.Infinity;
 
 	private void Update ()
     {
@@ -30,19 +27,23 @@ public class FocusInteractable : MonoBehaviour
         {
             currentHitDistance = hit.distance;
             Debug.DrawLine(rayCastOrigin.position, hit.transform.position, Color.red);
+
             if (currentHitDistance < shortestDistance)
             {
                 shortestDistance = currentHitDistance;
+
                 if (closestObject != null)
                 {
                     closestObject.Focused = false;
                 }
+
                 if(closestObject = hit.transform.gameObject.GetComponent<Interactable>())
                 {
                     closestObject.Focused = true;
                 }
             }
         }
+
         shortestDistance = Mathf.Infinity;
     }
 

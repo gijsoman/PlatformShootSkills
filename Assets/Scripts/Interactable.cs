@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
@@ -11,7 +8,6 @@ public class Interactable : MonoBehaviour
 
     public virtual void Interact()
     {
-        //This method is meant to be overwritten.
         if (!hasInteracted)
         {
             Debug.Log("Interacting");
@@ -37,6 +33,7 @@ public class Interactable : MonoBehaviour
             Interact();
             hasInteracted = true;
         }
+
         IsFocused();
     }
 

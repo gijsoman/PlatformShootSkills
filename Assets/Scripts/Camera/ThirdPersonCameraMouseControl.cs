@@ -10,13 +10,12 @@ public class ThirdPersonCameraMouseControl : MonoBehaviour
     [SerializeField] private float rotationSmoothTime = 0.05f;
     [SerializeField] private bool hideCursor = false;
 
+    private ThirdPersonCamera thirdPersonCamera;
+
     private float yaw;
     private float pitch;
-
     private Vector3 currentRotation;
     private Vector3 rotationVelocity;
-
-    private ThirdPersonCamera thirdPersonCamera;
 
     void Start ()
     {
@@ -25,6 +24,7 @@ public class ThirdPersonCameraMouseControl : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
+
         thirdPersonCamera = GetComponent<ThirdPersonCamera>();
         thirdPersonCamera.SameRotationAsCharacter = false;
     }

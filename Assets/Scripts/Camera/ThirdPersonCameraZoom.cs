@@ -7,11 +7,10 @@ public class ThirdPersonCameraZoom : MonoBehaviour
     [SerializeField] private float maximumZoom = 10f;
     [SerializeField] private float zoomSpeed = 1f;
 
-    private float currentZoom;
-
-    private float distanceFromTarget;
-
     private ThirdPersonCamera thirdPersonCamera;
+
+    private float currentZoom;
+    private float distanceFromTarget;
 
     private void Start()
     {
