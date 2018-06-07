@@ -28,6 +28,8 @@ public class Slot : MonoBehaviour
 
     public void SetAnchor(Vector2 _minXY, Vector2 _maxXY, Vector2 _pivot)
     {
-        
+        rect.pivot = _pivot;
+        rect.anchorMin = _minXY;
+        rect.anchorMax = _maxXY;
     }
 }
