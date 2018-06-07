@@ -34,13 +34,13 @@ public class SlotGrid : MonoBehaviour
                 currentSlot.SetAnchoredPosition(gridStartPosition + slotSizes.x * x + slotPadding * x, gridStartPosition - y * slotSizes.y - slotPadding * y);
                 slotsSubList.Add(slot);
             }
-            slots.Add(slotsSubList);
+            Slots.Add(slotsSubList);
         }
     }
 
     private void RemoveSlots()
     {
-        foreach (List<GameObject> gameObjectsList in slots)
+        foreach (List<GameObject> gameObjectsList in Slots)
         {
             foreach (GameObject gameobject in gameObjectsList)
             {
