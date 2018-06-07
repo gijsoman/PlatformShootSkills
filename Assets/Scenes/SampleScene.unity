@@ -1503,7 +1503,7 @@ GameObject:
   - component: {fileID: 1704139607}
   - component: {fileID: 1704139609}
   - component: {fileID: 1704139608}
-  - component: {fileID: 1704139610}
+  - component: {fileID: 1704139611}
   m_Layer: 5
   m_Name: InventoryContainer
   m_TagString: Untagged
@@ -1526,7 +1526,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 507.29932, y: -286.59998}
+  m_AnchoredPosition: {x: 507.34998, y: -286.59995}
   m_SizeDelta: {x: -1014.69995, y: -573.19995}
   m_Pivot: {x: 0.5, y: 0.49999994}
 --- !u!114 &1704139608
@@ -1562,7 +1562,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1704139606}
---- !u!114 &1704139610
+--- !u!114 &1704139611
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -1573,9 +1573,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3df04af20bcbbe0468b7bf33ff4f0635, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amountOfSlots: {x: 8, y: 5}
-  slotSizes: {x: 90, y: 90}
-  slotPadding: 10
+  amountOfSlots: {x: 13, y: 10}
+  slotSizes: {x: 39, y: 40}
+  slotPadding: 8
 --- !u!1 &1724301672
 GameObject:
   m_ObjectHideFlags: 0
