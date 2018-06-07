@@ -18,13 +18,6 @@ public class SlotGrid : MonoBehaviour
 
     private void Start()
     {
-       
-    }
-
-    private void OnValidate()
-    {
-        RemoveSlots();
-        slots.Clear();
         CreateSlots();
     }
 
