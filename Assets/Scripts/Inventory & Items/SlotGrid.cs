@@ -12,10 +12,10 @@ public class SlotGrid : MonoBehaviour
 
     private void Start()
     {
-        InitizializeGrid();
+        CreateSlots();
     }
 
-    private void InitizializeGrid()
+    private void CreateSlots()
     {
         for (int y = 0; y < amountOfSlots.y; y++)
         {
@@ -23,6 +23,7 @@ public class SlotGrid : MonoBehaviour
             for (int X = 0; X < amountOfSlots.x; X++)
             {
                 GameObject slot = new GameObject();
+                slot.transform.SetParent(transform);
                 slot.AddComponent<Slot>();
                 slotsSubList.Add(slot);
             }
@@ -31,13 +32,4 @@ public class SlotGrid : MonoBehaviour
     }
 }
 
-[System.Serializable]
-public class ListContainer
-{
-    public List<string> ContainedList = new List<string>();
-}
-[System.Serializable]
-public class MasterList
-{
-    public List<ListContainer> Master = new List<ListContainer>();
-}
+

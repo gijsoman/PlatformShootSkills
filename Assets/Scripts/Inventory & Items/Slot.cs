@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(RectTransform))]
+[RequireComponent(typeof(CanvasRenderer))]
 public class Slot : MonoBehaviour
 {
     [SerializeField] private Vector2Int widthHeight = new Vector2Int(10, 10);
