@@ -8,6 +8,12 @@ public class Slot : MonoBehaviour
     private bool isOccupied;
     private RectTransform rect;
 
+    public Slot(int _width, int _height)
+    {
+        widthHeight.x = _width;
+        widthHeight.y = _height;
+    }
+
     private void Start()
     {
         rect = GetComponent<RectTransform>();
