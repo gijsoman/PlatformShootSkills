@@ -8,8 +8,9 @@ public class Slot : MonoBehaviour
 {
     [SerializeField] private Vector2Int widthHeight = new Vector2Int(10, 10);
 
-    private bool isOccupied;
     private RectTransform rect;
+
+    private bool isOccupied;
 
     private void OnValidate()
     {

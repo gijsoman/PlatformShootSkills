@@ -1,20 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class SlotGrid : MonoBehaviour
 {
+    //Using a nested list instead of an array in case we want to increase the size of the inventory.
+    public List<List<GameObject>> Slots = new List<List<GameObject>>();
+
     [SerializeField] private Vector2Int amountOfSlots = new Vector2Int(10, 10);
     [SerializeField] private Vector2Int slotSizes = new Vector2Int(10, 10);
     [SerializeField] private int slotPadding = 10;
 
     private int gridStartPosition = 0;
-
     private int totalGridWidth;
     private int totalGridHeight;
-
-    //Using a nested list instead of an array in case we want to increase the size of the inventory.
-    public List<List<GameObject>> slots = new List<List<GameObject>>();
 
     private void Start()
     {
