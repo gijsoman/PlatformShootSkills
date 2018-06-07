@@ -10,11 +10,21 @@ public class SlotGrid : MonoBehaviour
 
     private int gridStartPosition = 0;
 
+    private int totalGridWidth;
+    private int totalGridHeight;
+
     //Using a nested list instead of an array in case we want to increase the size of the inventory.
     public List<List<GameObject>> slots = new List<List<GameObject>>();
 
     private void Start()
     {
+       
+    }
+
+    private void OnValidate()
+    {
+        RemoveSlots();
+        slots.Clear();
         CreateSlots();
     }
 
@@ -34,6 +44,20 @@ public class SlotGrid : MonoBehaviour
                 slotsSubList.Add(slot);
             }
             slots.Add(slotsSubList);
+        }
+    }
+
+    private void RemoveSlots()
+    {
+        foreach (List<GameObject> gameObjectsList in slots)
+        {
+            foreach (GameObject gameobject in gameObjectsList)
+            {
+                UnityEditor.EditorApplication.delayCall += () =>
+                {
+                    DestroyImmediate(gameobject);
+                };
+            }
         }
     }
 

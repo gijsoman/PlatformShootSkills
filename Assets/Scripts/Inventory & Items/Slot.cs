@@ -11,7 +11,7 @@ public class Slot : MonoBehaviour
     private bool isOccupied;
     private RectTransform rect;
 
-    private void Awake()
+    private void OnValidate()
     {
         rect = GetComponent<RectTransform>();
     }
