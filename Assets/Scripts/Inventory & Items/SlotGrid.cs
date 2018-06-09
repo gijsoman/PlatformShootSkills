@@ -34,8 +34,8 @@ public class SlotGrid : MonoBehaviour
                 //set slotWidthAndHeight based on the width of our transform.
                 slotWidthAndHeight = rect.sizeDelta.x / amountOfSlots.x;
                 currentSlot.SetWidthAndHeight(slotWidthAndHeight, slotWidthAndHeight);
-                currentSlot.SetAnchor(new Vector2(0, 1), new Vector2(0, 1), new Vector2(0, 1)); //fix this with an enumerator so the user can choose the place of the anchor and of the pivot. or maybe dont let the user choose and always create the grid within the parent container.
-                currentSlot.SetAnchoredPosition(gridStartPosition + slotWidthAndHeight * x, gridStartPosition - y * slotWidthAndHeight);
+                currentSlot.SetAnchor(new Vector2(0, 0), new Vector2(1, 1), new Vector2(0, 1)); //fix this with an enumerator so the user can choose the place of the anchor and of the pivot. or maybe dont let the user choose and always create the grid within the parent container.
+                //currentSlot.SetAnchoredPosition(gridStartPosition + slotWidthAndHeight * x, gridStartPosition - y * slotWidthAndHeight);
                 slotsSubList.Add(slot);
             }
             Slots.Add(slotsSubList);
