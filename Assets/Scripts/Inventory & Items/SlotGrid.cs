@@ -51,10 +51,13 @@ public class SlotGrid : MonoBehaviour
                 GameObject slot = new GameObject("Slot " + x + ", " + y);
                 slot.transform.SetParent(transform);
                 Slot currentSlot = slot.AddComponent<Slot>();
+                RectTransform slotRect = slot.GetComponent<RectTransform>();
                 currentSlot.transform.localScale = Vector3.one;
-                currentSlot.SetWidthAndHeight(slotWidthAndHeight, slotWidthAndHeight);
-                currentSlot.SetAnchor(new Vector2(0, 1), new Vector2(0, 1), new Vector2(0, 1));
-                currentSlot.SetAnchoredPosition(gridStartPosition + slotWidthAndHeight * x, gridStartPosition - y * slotWidthAndHeight);
+                slotRect.sizeDelta = new Vector2(slotWidthAndHeight, slotWidthAndHeight);
+                slotRect.pivot = new Vector2(0,1);
+                slotRect.anchorMin = new Vector2(0,1);
+                slotRect.anchorMax = new Vector2(0,1);
+                slotRect.anchoredPosition = new Vector2(gridStartPosition + slotWidthAndHeight * x, gridStartPosition - y * slotWidthAndHeight);
                 slotsSubList.Add(slot);
             }
             Slots.Add(slotsSubList);
