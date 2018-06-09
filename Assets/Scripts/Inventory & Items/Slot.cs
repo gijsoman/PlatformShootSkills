@@ -22,7 +22,17 @@ public class Slot : MonoBehaviour
         rect.sizeDelta = new Vector2Int(_width, _height);
     }
 
+    public void SetWidthAndHeight(float _width, float _height)
+    {
+        rect.sizeDelta = new Vector2(_width, _height);
+    }
+
     public void SetAnchoredPosition(int _xPosition, int _yPosition)
+    {
+        rect.anchoredPosition = new Vector2(_xPosition, _yPosition);
+    }
+
+    public void SetAnchoredPosition(float _xPosition, float _yPosition)
     {
         rect.anchoredPosition = new Vector2(_xPosition, _yPosition);
     }
