@@ -12,7 +12,7 @@ public class Slot : MonoBehaviour
 
     private bool isOccupied;
 
-    private void OnValidate()
+    private void Awake()
     {
         rect = GetComponent<RectTransform>();
     }
