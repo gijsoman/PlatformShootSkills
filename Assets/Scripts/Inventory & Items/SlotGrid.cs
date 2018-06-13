@@ -15,7 +15,7 @@ public class SlotGrid : MonoBehaviour
     [SerializeField] private Vector2Int amountOfSlots = new Vector2Int(10, 10);
 
     private float slotWidthAndHeight;
-    //[SerializeField] private int slotPadding = 10;
+    [SerializeField] private int slotPadding = 10;
 
     private float gridStartPosition = 0;
     private float totalSlotHeight;
@@ -24,21 +24,18 @@ public class SlotGrid : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log(rect.sizeDelta.x);
         CreateSlots();
     }
 
     private void OnValidate()
     {
         rect = GetComponent<RectTransform>();
-        Debug.Log("slotWidthAndHeight: " + slotWidthAndHeight);
-        Debug.Log("amountOfSlots X: " + amountOfSlots.x);
         if (amountOfSlots.x != 0)
         {
             slotWidthAndHeight = rect.sizeDelta.x / amountOfSlots.x;
         }
-        totalSlotHeight = amountOfSlots.y * slotWidthAndHeight;
-        rect.sizeDelta = new Vector2(rect.sizeDelta.x, totalSlotHeight);
+        totalSlotHeight = amountOfSlots.y * slotWidthAndHeight + amountOfSlots.y * slotPadding;
+        rect.sizeDelta = new Vector2(rect.sizeDelta.x + amountOfSlots.x * slotPadding, totalSlotHeight);
     }
 
     private void CreateSlots()
@@ -57,7 +54,7 @@ public class SlotGrid : MonoBehaviour
                 slotRect.pivot = new Vector2(0,1);
                 slotRect.anchorMin = new Vector2(0,1);
                 slotRect.anchorMax = new Vector2(0,1);
-                slotRect.anchoredPosition = new Vector2(gridStartPosition + slotWidthAndHeight * x, gridStartPosition - y * slotWidthAndHeight);
+                slotRect.anchoredPosition = new Vector2(gridStartPosition + x * slotWidthAndHeight + slotPadding * x, gridStartPosition - y * slotWidthAndHeight - slotPadding * y);
                 slotsSubList.Add(slot);
             }
             Slots.Add(slotsSubList);
