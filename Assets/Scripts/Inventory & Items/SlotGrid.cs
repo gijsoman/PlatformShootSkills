@@ -25,9 +25,7 @@ public class SlotGrid : MonoBehaviour
     private void OnValidate()
     {
         rect = GetComponent<RectTransform>();
-
-            totalSlotHeight = amountOfSlots.y * slotWidthAndHeight + (amountOfSlots.y - 1) * slotPadding;
-        
+        totalSlotHeight = amountOfSlots.y * slotWidthAndHeight + (amountOfSlots.y - 1) * slotPadding;
         totalSlotWidth = amountOfSlots.x * slotWidthAndHeight + (amountOfSlots.x - 1) * slotPadding;
         rect.sizeDelta = new Vector2(totalSlotWidth, totalSlotHeight);
     }
