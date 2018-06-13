@@ -7,40 +7,34 @@ using UnityEngine.UI;
 //2. Add padding to cells.
 //3. Fix that the panel wont change size EVERY TIME.
 
-[RequireComponent(typeof(AspectRatioFitter))]
 public class SlotGrid : MonoBehaviour
 {
     public List<List<GameObject>> Slots = new List<List<GameObject>>();
 
     [SerializeField] private int slotPadding = 10;
     [SerializeField] private Vector2Int amountOfSlots = new Vector2Int(10, 10);
+    [SerializeField] private float slotWidthAndHeight = 20;
 
     RectTransform rect;
     AspectRatioFitter aspectFitter;
 
-    private float slotWidthAndHeight;
     private float gridStartPosition = 0;
     private float totalSlotHeight;
     private float totalSlotWidth;
 
-    private void Start()
-    {
-        CreateSlots();
-    }
-
     private void OnValidate()
     {
         rect = GetComponent<RectTransform>();
-        aspectFitter = GetComponent<AspectRatioFitter>();
-        aspectFitter.aspectMode = AspectRatioFitter.AspectMode.None;
-        if (amountOfSlots.x != 0)
-        {
-            slotWidthAndHeight = rect.sizeDelta.x / amountOfSlots.x;
-            totalSlotHeight = amountOfSlots.y * slotWidthAndHeight + amountOfSlots.y * (slotPadding - 1);
-        }
-        totalSlotWidth = rect.sizeDelta.x + (amountOfSlots.x - 1) * slotPadding;
+
+            totalSlotHeight = amountOfSlots.y * slotWidthAndHeight + (amountOfSlots.y - 1) * slotPadding;
+        
+        totalSlotWidth = amountOfSlots.x * slotWidthAndHeight + (amountOfSlots.x - 1) * slotPadding;
         rect.sizeDelta = new Vector2(totalSlotWidth, totalSlotHeight);
-        aspectFitter.aspectMode = AspectRatioFitter.AspectMode.WidthControlsHeight;
+    }
+
+    private void Start()
+    {
+        CreateSlots();
     }
 
     private void CreateSlots()
