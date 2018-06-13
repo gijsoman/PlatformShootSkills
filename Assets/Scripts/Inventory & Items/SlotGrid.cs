@@ -1,26 +1,27 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 //TODO: 
 //1. Clean up your code. Place it following your conventions.
 //2. Add padding to cells.
-//3. Make containerpanel mantain aspectratio when resizing. 
-//4. Should I fix the hardcoded part?
+//3. Fix that the panel wont change size EVERY TIME.
 
-
+[RequireComponent(typeof(AspectRatioFitter))]
 public class SlotGrid : MonoBehaviour
 {
     public List<List<GameObject>> Slots = new List<List<GameObject>>();
 
+    [SerializeField] private int slotPadding = 10;
     [SerializeField] private Vector2Int amountOfSlots = new Vector2Int(10, 10);
 
-    private float slotWidthAndHeight;
-    [SerializeField] private int slotPadding = 10;
+    RectTransform rect;
+    AspectRatioFitter aspectFitter;
 
+    private float slotWidthAndHeight;
     private float gridStartPosition = 0;
     private float totalSlotHeight;
-
-    RectTransform rect;
+    private float totalSlotWidth;
 
     private void Start()
     {
@@ -30,12 +31,16 @@ public class SlotGrid : MonoBehaviour
     private void OnValidate()
     {
         rect = GetComponent<RectTransform>();
+        aspectFitter = GetComponent<AspectRatioFitter>();
+        aspectFitter.aspectMode = AspectRatioFitter.AspectMode.None;
         if (amountOfSlots.x != 0)
         {
             slotWidthAndHeight = rect.sizeDelta.x / amountOfSlots.x;
+            totalSlotHeight = amountOfSlots.y * slotWidthAndHeight + amountOfSlots.y * (slotPadding - 1);
         }
-        totalSlotHeight = amountOfSlots.y * slotWidthAndHeight + amountOfSlots.y * slotPadding;
-        rect.sizeDelta = new Vector2(rect.sizeDelta.x + amountOfSlots.x * slotPadding, totalSlotHeight);
+        totalSlotWidth = rect.sizeDelta.x + (amountOfSlots.x - 1) * slotPadding;
+        rect.sizeDelta = new Vector2(totalSlotWidth, totalSlotHeight);
+        aspectFitter.aspectMode = AspectRatioFitter.AspectMode.WidthControlsHeight;
     }
 
     private void CreateSlots()

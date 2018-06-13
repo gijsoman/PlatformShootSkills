@@ -1596,7 +1596,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -480, y: 310}
-  m_SizeDelta: {x: 925.1, y: 555.05994}
+  m_SizeDelta: {x: 1125.1, y: 675.05994}
   m_Pivot: {x: 0.50000006, y: 0.5}
 --- !u!114 &1704139608
 MonoBehaviour:
@@ -1643,7 +1643,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amountOfSlots: {x: 10, y: 6}
-  slotPadding: 10
+  slotPadding: 5
 --- !u!1 &1724301672
 GameObject:
   m_ObjectHideFlags: 0
