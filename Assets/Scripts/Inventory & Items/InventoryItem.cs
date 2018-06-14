@@ -21,11 +21,17 @@ public class InventoryItem : MonoBehaviour
     {
         slotGrid = SlotGrid.instance;
         slotSize = slotGrid.slotWidthAndHeight;
+        transform.SetParent(_parent);
+        ScaleInventoryItem(_item);
+        itemIcon.sprite = _item.ItemIcon;
+    }
+
+    public void ScaleInventoryItem(Item _item)
+    {
         rect.anchorMin = new Vector2(0, 1);
         rect.anchorMax = new Vector2(0, 1);
         rect.sizeDelta = new Vector2(_item.AmountOfSlotsOccupying.x * slotSize, _item.AmountOfSlotsOccupying.y * slotSize);
-        itemIcon.sprite = _item.ItemIcon;
-        transform.SetParent(_parent);
+        rect.localScale = Vector3.one;
     }
 
     private void Update()
