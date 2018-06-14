@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class InventoryItem : MonoBehaviour
 {
     private Item item;
-    private SlotGrid slotGrid;
+    [SerializeField]private SlotGrid slotGrid;
     bool isDragging = false;
 
     private float slotSize;
