@@ -9,11 +9,11 @@ using UnityEngine.UI;
 
 public class SlotGrid : MonoBehaviour
 {
+    public float slotWidthAndHeight = 20;
     public List<List<GameObject>> Slots = new List<List<GameObject>>();
 
     [SerializeField] private int slotPadding = 10;
     [SerializeField] private Vector2Int amountOfSlots = new Vector2Int(10, 10);
-    [SerializeField] private float slotWidthAndHeight = 20;
 
     RectTransform rect;
     AspectRatioFitter aspectFitter;

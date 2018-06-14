@@ -7,4 +7,7 @@ using UnityEngine;
 public class Slot : MonoBehaviour
 {
     private bool isOccupied;
+
+    private GameObject storedItem;
+    private Vector2Int storedItemSize;
 }
