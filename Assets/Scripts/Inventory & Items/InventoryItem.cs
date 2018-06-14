@@ -13,6 +13,7 @@ public class InventoryItem : MonoBehaviour
 
     private void Start()
     {
+        slotGrid = GameObject.Find("ItemPanel").GetComponent<SlotGrid>(); //Maybe fix this with singleton.
         slotSize = slotGrid.slotWidthAndHeight;
         rect = GetComponent<RectTransform>();
         itemIcon = GetComponent<Sprite>();
