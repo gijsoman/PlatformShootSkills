@@ -9,6 +9,18 @@ using UnityEngine.UI;
 
 public class SlotGrid : MonoBehaviour
 {
+    #region Singleton
+    public static SlotGrid instance;
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.LogWarning("More than one instance of the infentory found");
+        }
+        instance = this;
+    }
+    #endregion
     public float slotWidthAndHeight = 20;
     public List<List<GameObject>> Slots = new List<List<GameObject>>();
 

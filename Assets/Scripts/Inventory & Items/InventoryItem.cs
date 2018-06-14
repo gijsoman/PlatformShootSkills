@@ -3,28 +3,29 @@ using UnityEngine.UI;
 
 public class InventoryItem : MonoBehaviour
 {
-    private Item item;
-    [SerializeField]private SlotGrid slotGrid;
+    [SerializeField] private float slotSize;
+    [SerializeField] private Image itemIcon;
+
+    private SlotGrid slotGrid;
+    private RectTransform rect;
+
     bool isDragging = false;
 
-    private float slotSize;
-    private RectTransform rect;
-    private Sprite itemIcon;
-
-    private void Start()
+    private void Awake()
     {
-        slotGrid = GameObject.Find("ItemPanel").GetComponent<SlotGrid>(); //Maybe fix this with singleton.
-        slotSize = slotGrid.slotWidthAndHeight;
         rect = GetComponent<RectTransform>();
-        itemIcon = GetComponent<Sprite>();
+        itemIcon = GetComponent<Image>();
     }
 
-    public void SetInventoryItem(Item _item)
+    public void SetInventoryItem(Item _item, Transform _parent)
     {
-        rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, item.AmountOfSlotsOccupying.x * slotSize); //Rmmbr padding needs to be added in the calculation.
-        rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, item.AmountOfSlotsOccupying.y * slotSize); //Rmmbr padding needs to be added in the calculation.
-        item = _item;
-        itemIcon = _item.ItemIcon;
+        slotGrid = SlotGrid.instance;
+        slotSize = slotGrid.slotWidthAndHeight;
+        rect.anchorMin = new Vector2(0, 1);
+        rect.anchorMax = new Vector2(0, 1);
+        rect.sizeDelta = new Vector2(_item.AmountOfSlotsOccupying.x * slotSize, _item.AmountOfSlotsOccupying.y * slotSize);
+        itemIcon.sprite = _item.ItemIcon;
+        transform.SetParent(_parent);
     }
 
     private void Update()
@@ -34,5 +35,4 @@ public class InventoryItem : MonoBehaviour
             transform.position = Input.mousePosition;
         }
     }
-
 }
