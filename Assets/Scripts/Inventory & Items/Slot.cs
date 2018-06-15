@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(Image))]
 public class Slot : MonoBehaviour
 {
-    private bool isOccupied;
+    public bool IsOccupied;
 
     private GameObject storedItem;
     private Vector2Int storedItemSize;
