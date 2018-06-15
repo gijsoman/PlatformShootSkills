@@ -18,6 +18,7 @@ public class SlotGridManager : MonoBehaviour
     #endregion
 
     [SerializeField] private GameObject itemPanel;
+    [SerializeField] private List<Slot> currentSlotNeighbours = new List<Slot>();
 
     public void StoreItem(GameObject _item) //maybe also a location to store the item in? Location in the list?
     {
@@ -36,7 +37,6 @@ public class SlotGridManager : MonoBehaviour
     {
         //We want to check for a free spot to store the item. We also want to check if the neighbour slots are available. We also want to return the location of the free spot.
         SlotGrid slotGrid = itemPanel.GetComponent<SlotGrid>();
-        List<bool> allNeighboursOccupied = new List<bool>();
         //First we check the first list of slots
         for (int y = 0; y < slotGrid.Slots.Count; y++)
         {
@@ -45,20 +45,26 @@ public class SlotGridManager : MonoBehaviour
             //Walk through each slot in this list
             for (int x = 0; x < subList.Count; x++)
             {
-                if (subList[x].GetComponent<Slot>().IsOccupied)
+                Slot currentSlot = subList[x].GetComponent<Slot>();
+                if (!currentSlot.IsOccupied)
                 {
-                    continue;
-                }
-                //We check the neighbours on this row.
-                for (int i = 0; i < _item.AmountOfSlotsOccupying.x; i++)
-                {
-                    //Save somewhere that the slot is free.
-                    if (!subList[i].GetComponent<Slot>().IsOccupied)
-                    {
-                        allNeighboursOccupied.Add(false);
-                    }
+                    //Get all the neighbours of this slot if it it isn't occupied.
+                    GetNeightbhours(currentSlot, _item);
                 }
             }
         }
+    }
+
+    private List<Slot> GetNeightbhours(Slot _slot, Item _item)
+    {
+        for (int y = 0; y < length; y++)
+        {
+            for (int x = 0; x < length; x++)
+            {
+
+            }
+        }
+
+        return currentSlotNeighbours;
     }
 }

@@ -55,9 +55,11 @@ public class SlotGrid : MonoBehaviour
             for (int x = 0; x < amountOfSlots.x; x++)
             {
                 GameObject slot = new GameObject("Slot " + x + ", " + y);
+                
                 slot.transform.SetParent(transform);
                 Slot currentSlot = slot.AddComponent<Slot>();
                 RectTransform slotRect = slot.GetComponent<RectTransform>();
+                currentSlot.positionInGrid = new Vector2Int(x, y);
                 currentSlot.transform.localScale = Vector3.one;
                 slotRect.sizeDelta = new Vector2(slotWidthAndHeight, slotWidthAndHeight);
                 slotRect.pivot = new Vector2(0,1);
