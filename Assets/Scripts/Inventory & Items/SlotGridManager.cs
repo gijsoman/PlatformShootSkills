@@ -18,25 +18,23 @@ public class SlotGridManager : MonoBehaviour
     #endregion
 
     [SerializeField] private GameObject itemPanel;
-    [SerializeField] private List<Slot> currentSlotNeighbours = new List<Slot>();
+    [SerializeField] private List<Slot> currentSlotsArea = new List<Slot>();
+
+    private SlotGrid slotGrid;
+
+    private void Start()
+    {
+        slotGrid = itemPanel.GetComponent<SlotGrid>();
+    }
 
     public void StoreItem(GameObject _item) //maybe also a location to store the item in? Location in the list?
     {
-        Slot slot;
-        Vector2Int amountOfSlotsOccupying = _item.GetComponent<Item>().AmountOfSlotsOccupying;
-        for (int x = 0; x < amountOfSlotsOccupying.x; x++)
-        {
-            for (int y = 0; y < amountOfSlotsOccupying.y; y++)
-            {
-                //set all the slot values.
-            }
-        }
+        
     }
 
-    public void CheckForFreeSpotInGrid(Item _item)
+    public void CheckForFreeSpotInGrid(Item _itemTryingToAdd)
     {
         //We want to check for a free spot to store the item. We also want to check if the neighbour slots are available. We also want to return the location of the free spot.
-        SlotGrid slotGrid = itemPanel.GetComponent<SlotGrid>();
         //First we check the first list of slots
         for (int y = 0; y < slotGrid.Slots.Count; y++)
         {
@@ -49,22 +47,42 @@ public class SlotGridManager : MonoBehaviour
                 if (!currentSlot.IsOccupied)
                 {
                     //Get all the neighbours of this slot if it it isn't occupied.
-                    GetNeightbhours(currentSlot, _item);
+                    if (IsEverySlotInAreaFree(GetSlotsArea(currentSlot, _itemTryingToAdd)))
+                    {
+                        
+                    }
                 }
             }
         }
     }
 
-    private List<Slot> GetNeightbhours(Slot _slot, Item _item)
+    private bool IsEverySlotInAreaFree(List<Slot> _slotsArea)
     {
-        for (int y = 0; y < length; y++)
+        for (int i = 0; i < _slotsArea.Count; i++)
         {
-            for (int x = 0; x < length; x++)
+            if (_slotsArea[i].IsOccupied)
             {
+                return false;
+            }
+        }
+        return true;
+    }
 
+    private List<Slot> GetSlotsArea(Slot _currentSlot, Item _itemTryingToAdd)
+    {
+        for (int y = _currentSlot.positionInGrid.y; y < _itemTryingToAdd.AmountOfSlotsOccupying.y; y++)
+        {
+            List<GameObject> subList = slotGrid.Slots[y];
+            for (int x = _currentSlot.positionInGrid.x; x < _itemTryingToAdd.AmountOfSlotsOccupying.x; x++)
+            {
+                Slot currentSlot = subList[x].GetComponent<Slot>();
+                if (!currentSlot.IsOccupied)
+                {
+                    currentSlotsArea.Add(currentSlot);
+                }
             }
         }
 
-        return currentSlotNeighbours;
+        return currentSlotsArea;
     }
 }
