@@ -29,10 +29,11 @@ public class SlotGridManager : MonoBehaviour
 
     public void StoreItem(GameObject _item) //maybe also a location to store the item in? Location in the list?
     {
-        
+        Item itemTryingToStore = _item.GetComponent<Item>();
+
     }
 
-    public void CheckForFreeSpotInGrid(Item _itemTryingToAdd)
+    public Slot CheckForFreeSlotInGrid(Item _itemTryingToStore)
     {
         //We want to check for a free spot to store the item. We also want to check if the neighbour slots are available. We also want to return the location of the free spot.
         //First we check the first list of slots
@@ -47,9 +48,9 @@ public class SlotGridManager : MonoBehaviour
                 if (!currentSlot.IsOccupied)
                 {
                     //Get all the neighbours of this slot if it it isn't occupied.
-                    if (IsEverySlotInAreaFree(GetSlotsArea(currentSlot, _itemTryingToAdd)))
+                    if (IsEverySlotInAreaFree(GetSlotsArea(currentSlot, _itemTryingToStore)))
                     {
-                        
+                        return currentSlot;
                     }
                 }
             }
