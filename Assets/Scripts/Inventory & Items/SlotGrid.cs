@@ -23,9 +23,9 @@ public class SlotGrid : MonoBehaviour
     #endregion
     public float slotWidthAndHeight = 20;
     public List<List<GameObject>> Slots = new List<List<GameObject>>();
+    public Vector2Int amountOfSlots = new Vector2Int(10, 10);
 
     [SerializeField] private int slotPadding = 10;
-    [SerializeField] private Vector2Int amountOfSlots = new Vector2Int(10, 10);
 
     RectTransform rect;
     AspectRatioFitter aspectFitter;
