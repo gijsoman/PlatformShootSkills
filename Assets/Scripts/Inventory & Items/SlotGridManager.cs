@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(SlotGrid))]
 public class SlotGridManager : MonoBehaviour
 {
     #region Singleton
@@ -24,16 +25,25 @@ public class SlotGridManager : MonoBehaviour
 
     private void Start()
     {
-        slotGrid = itemPanel.GetComponent<SlotGrid>();
+        slotGrid = GetComponent<SlotGrid>();
     }
 
-    public void StoreItem(GameObject _item) //maybe also a location to store the item in? Location in the list?
+    public void StoreItem(GameObject _item) 
     {
         Item itemTryingToStore = _item.GetComponent<Item>();
+        //I want a list of all slots the store the item in......
+        if (GetFreeAreaOfSlotsInGrid(itemTryingToStore) != null)
+        {
+            Debug.Log("We can store the item");
+        }
+        else
+        {
+            Debug.Log("We can not store the item");
+        }
 
     }
 
-    public Slot CheckForFreeSlotInGrid(Item _itemTryingToStore)
+    public List<Slot> GetFreeAreaOfSlotsInGrid(Item _itemTryingToStore)
     {
         //We want to check for a free spot to store the item. We also want to check if the neighbour slots are available. We also want to return the location of the free spot.
         //First we check the first list of slots
@@ -50,11 +60,12 @@ public class SlotGridManager : MonoBehaviour
                     //Get all the neighbours of this slot if it it isn't occupied.
                     if (IsEverySlotInAreaFree(GetSlotsArea(currentSlot, _itemTryingToStore)))
                     {
-                        return currentSlot;
+                        return currentSlotsArea;
                     }
                 }
             }
         }
+        return null;
     }
 
     private bool IsEverySlotInAreaFree(List<Slot> _slotsArea)
@@ -71,6 +82,7 @@ public class SlotGridManager : MonoBehaviour
 
     private List<Slot> GetSlotsArea(Slot _currentSlot, Item _itemTryingToAdd)
     {
+        currentSlotsArea.Clear();
         for (int y = _currentSlot.positionInGrid.y; y < _itemTryingToAdd.AmountOfSlotsOccupying.y; y++)
         {
             List<GameObject> subList = slotGrid.Slots[y];
