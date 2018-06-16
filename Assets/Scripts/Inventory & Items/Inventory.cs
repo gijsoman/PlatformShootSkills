@@ -25,10 +25,12 @@ public class Inventory : MonoBehaviour
     [SerializeField] private int currentlyOccupiedSpace;
 
     private SlotGrid slotGrid;
+    private SlotGridManager slotGridManager;
 
     private void Start()
     {
         slotGrid = SlotGrid.instance;
+        slotGridManager = SlotGridManager.instance;
         MaxSpace = slotGrid.amountOfSlots.x * slotGrid.amountOfSlots.y;
     }
 
@@ -40,6 +42,8 @@ public class Inventory : MonoBehaviour
             return false;
         }
 
+        //if we can store item invoke delegate and add it to the list. otherwise we return false with a warning.
+        
         Items.Add(_item);
         currentlyOccupiedSpace += _item.ItemSize();
         if (onItemChangesCallBack != null)

@@ -28,6 +28,14 @@ public class SlotGridManager : MonoBehaviour
         slotGrid = GetComponent<SlotGrid>();
     }
 
+    public bool CanWeStoreItem(Item _itemToCheck)
+    {
+        if (FindSlotToStoreItem(_itemToCheck) != null)
+        {
+
+        }
+    }
+
     public void StoreItem(GameObject _inventoryItem) 
     {
         Item itemTryingToStore = _inventoryItem.gameObject.GetComponent<InventoryItem>().item;
@@ -47,10 +55,7 @@ public class SlotGridManager : MonoBehaviour
             _inventoryItem.transform.position = currentSlotsArea[0].transform.position;
             _inventoryItem.transform.SetParent(storedItemsParent);
         }
-        else
-        {
-            Debug.Log("We can not store the item");
-        }
+        Debug.Log("We can not store the item");
     }
 
     public List<Slot> FindSlotToStoreItem(Item _itemTryingToStore)

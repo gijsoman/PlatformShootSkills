@@ -7,19 +7,15 @@ public class InventoryItemCreator : MonoBehaviour
     [SerializeField] private Transform createdInventoryItemParent;
     private Inventory inventory;
 
-    private SlotGridManager slotGridManager;
-
     private void Start()
     {
         inventory = Inventory.instance;
-        slotGridManager = SlotGridManager.instance;
-        inventory.onItemChangesCallBack += CreateItem;
+        inventory.onItemChangesCallBack += CreateInventoryItem;
     }
 
-    private void CreateItem(Item _item)
+    private void CreateInventoryItem(Item _item)
     {
         GameObject inventoryItem = new GameObject(_item.name, typeof(Image), typeof(InventoryItem));
         inventoryItem.GetComponent<InventoryItem>().SetInventoryItem(_item, createdInventoryItemParent);
-        slotGridManager.StoreItem(inventoryItem);
     }
 }
