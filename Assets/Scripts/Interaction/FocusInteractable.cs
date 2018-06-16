@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class FocusInteractable : MonoBehaviour
 {
@@ -6,6 +7,7 @@ public class FocusInteractable : MonoBehaviour
     [SerializeField] private float maxRayDistance = 100f;
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private Transform rayCastOrigin;
+    [SerializeField] private Text currentlyFocussingInteractable; //I can fix this with a delegate.
 
     private Interactable closestObject;
 
@@ -40,6 +42,7 @@ public class FocusInteractable : MonoBehaviour
                 if(closestObject = hit.transform.gameObject.GetComponent<Interactable>())
                 {
                     closestObject.Focused = true;
+                    currentlyFocussingInteractable.text = closestObject.name;
                 }
             }
         }
