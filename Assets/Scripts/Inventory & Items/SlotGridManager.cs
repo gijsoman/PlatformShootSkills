@@ -69,7 +69,6 @@ public class SlotGridManager : MonoBehaviour
                 {
                     if (!CheckForEndOfGridReached(currentSlot, _itemTryingToStore))
                     {
-                        Debug.Log("We got out of range");
                         //Get all the neighbours of this slot if it it isn't occupied.
                         if (IsEverySlotInAreaFree(GetSlotsArea(currentSlot, _itemTryingToStore)))
                         {
@@ -89,25 +88,24 @@ public class SlotGridManager : MonoBehaviour
         {
             if (_slotsArea[i].IsOccupied)
             {
+                Debug.Log("Not every slot is free");
                 return false;
             }
         }
-
+        
         return true;
     }
 
     private List<Slot> GetSlotsArea(Slot _currentSlot, Item _itemTryingToAdd)
     {
+        currentSlotsArea.Clear();
         for (int y = _currentSlot.positionInGrid.y; y < _currentSlot.positionInGrid.y + _itemTryingToAdd.AmountOfSlotsOccupying.y; y++)
         {
             List<GameObject> subList = slotGrid.Slots[y];
             for (int x = _currentSlot.positionInGrid.x; x < _currentSlot.positionInGrid.x + _itemTryingToAdd.AmountOfSlotsOccupying.x; x++)
             {
                 Slot currentSlot = subList[x].GetComponent<Slot>();
-                if (!currentSlot.IsOccupied)
-                {
-                    currentSlotsArea.Add(currentSlot);
-                }
+                currentSlotsArea.Add(currentSlot);
             }
         }
 
