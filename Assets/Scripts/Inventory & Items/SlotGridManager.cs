@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(SlotGrid))]
@@ -33,7 +32,7 @@ public class SlotGridManager : MonoBehaviour
     {
         Item itemTryingToStore = _inventoryItem.gameObject.GetComponent<InventoryItem>().item;
         //I want a list of all slots we can store store the item in......
-        if (GetFreeAreaOfSlotsInGrid(itemTryingToStore) != null)
+        if (FindSlotToStoreItem(itemTryingToStore) != null)
         {
             Debug.Log("We can store the item");
             //Store the actual item
@@ -52,14 +51,12 @@ public class SlotGridManager : MonoBehaviour
         {
             Debug.Log("We can not store the item");
         }
-
     }
 
-    public List<Slot> GetFreeAreaOfSlotsInGrid(Item _itemTryingToStore)
+    public List<Slot> FindSlotToStoreItem(Item _itemTryingToStore)
     {
         currentSlotsArea.Clear();
         //We want to check for a free spot to store the item. We also want to check if the neighbour slots are available. We also want to return the location of the free spot.
-        //First we check the first list of slots
         for (int y = 0; y < slotGrid.Slots.Count; y++)
         {
             //We store the first list in a temporary sublist.
@@ -70,14 +67,19 @@ public class SlotGridManager : MonoBehaviour
                 Slot currentSlot = subList[x].GetComponent<Slot>();
                 if (!currentSlot.IsOccupied)
                 {
-                    //Get all the neighbours of this slot if it it isn't occupied.
-                    if (IsEverySlotInAreaFree(GetSlotsArea(currentSlot, _itemTryingToStore)))
+                    if (!CheckForEndOfGridReached(currentSlot, _itemTryingToStore))
                     {
-                        return currentSlotsArea;
+                        Debug.Log("We got out of range");
+                        //Get all the neighbours of this slot if it it isn't occupied.
+                        if (IsEverySlotInAreaFree(GetSlotsArea(currentSlot, _itemTryingToStore)))
+                        {
+                            return currentSlotsArea;
+                        }
                     }
                 }
             }
         }
+
         return null;
     }
 
@@ -90,6 +92,7 @@ public class SlotGridManager : MonoBehaviour
                 return false;
             }
         }
+
         return true;
     }
 
@@ -109,5 +112,34 @@ public class SlotGridManager : MonoBehaviour
         }
 
         return currentSlotsArea;
+    }
+
+    private bool CheckForEndOfGridReached(Slot _currentSlot, Item _itemTryingToAdd)
+    {
+        //check if the item is not to big for the remaining slots. 
+        int amountOfYSlotsLeft = 0;
+        int amountOfXSlotsLeft = 0;
+
+        for (int y = _currentSlot.positionInGrid.y; y < slotGrid.Slots.Count; y++)
+        {
+            amountOfYSlotsLeft++;
+        }
+
+        List<GameObject> xSlots = slotGrid.Slots[_currentSlot.positionInGrid.y];
+        for (int x = _currentSlot.positionInGrid.x; x < xSlots.Count; x++)
+        {
+            amountOfXSlotsLeft++;
+        }
+
+        if (amountOfYSlotsLeft < _itemTryingToAdd.AmountOfSlotsOccupying.y)
+        {
+            return true;
+        }
+        if (amountOfXSlotsLeft < _itemTryingToAdd.AmountOfSlotsOccupying.x)
+        {
+            return true;
+        }
+
+        return false;
     }
 }
