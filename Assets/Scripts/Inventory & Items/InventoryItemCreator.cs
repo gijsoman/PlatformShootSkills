@@ -7,12 +7,12 @@ public class InventoryItemCreator : MonoBehaviour
     [SerializeField] private Transform createdInventoryItemParent;
     private Inventory inventory;
 
-    private SlotGridManager slotGridManager;
+    private SlotGridStorageManager slotGridManager;
 
     private void Start()
     {
         inventory = Inventory.instance;
-        slotGridManager = SlotGridManager.instance;
+        slotGridManager = SlotGridStorageManager.instance;
         inventory.onItemChangesCallBack += CreateInventoryItem;
     }
 

@@ -25,12 +25,12 @@ public class Inventory : MonoBehaviour
     [SerializeField] private int currentlyOccupiedSpace;
 
     private SlotGrid slotGrid;
-    private SlotGridManager slotGridManager;
+    private SlotGridStorageManager slotGridManager;
 
     private void Start()
     {
         slotGrid = SlotGrid.instance;
-        slotGridManager = SlotGridManager.instance;
+        slotGridManager = SlotGridStorageManager.instance;
         MaxSpace = slotGrid.amountOfSlots.x * slotGrid.amountOfSlots.y;
     }
 

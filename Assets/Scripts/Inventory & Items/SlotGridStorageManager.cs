@@ -2,10 +2,10 @@
 using UnityEngine;
 
 [RequireComponent(typeof(SlotGrid))]
-public class SlotGridManager : MonoBehaviour
+public class SlotGridStorageManager : MonoBehaviour
 {
     #region Singleton
-    public static SlotGridManager instance;
+    public static SlotGridStorageManager instance;
 
     private void Awake()
     {
