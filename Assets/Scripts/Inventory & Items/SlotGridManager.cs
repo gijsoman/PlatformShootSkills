@@ -20,6 +20,7 @@ public class SlotGridManager : MonoBehaviour
 
     [SerializeField] private GameObject itemPanel;
     [SerializeField] private List<Slot> currentSlotsArea = new List<Slot>();
+    [SerializeField] private Transform storedItemsParent;
 
     private SlotGrid slotGrid;
 
@@ -28,13 +29,24 @@ public class SlotGridManager : MonoBehaviour
         slotGrid = GetComponent<SlotGrid>();
     }
 
-    public void StoreItem(GameObject _item) 
+    public void StoreItem(GameObject _inventoryItem) 
     {
-        Item itemTryingToStore = _item.GetComponent<Item>();
-        //I want a list of all slots the store the item in......
+        Item itemTryingToStore = _inventoryItem.gameObject.GetComponent<InventoryItem>().item;
+        //I want a list of all slots we can store store the item in......
         if (GetFreeAreaOfSlotsInGrid(itemTryingToStore) != null)
         {
             Debug.Log("We can store the item");
+            //Store the actual item
+            for (int i = 0; i < currentSlotsArea.Count; i++)
+            {
+                currentSlotsArea[i].IsOccupied = true;
+                currentSlotsArea[i].storedItem = _inventoryItem;
+            }
+            //change the position, parent and the pivot of the item.
+            RectTransform rect = _inventoryItem.GetComponent<RectTransform>();
+            rect.pivot = new Vector2(0, 1);
+            _inventoryItem.transform.position = currentSlotsArea[0].transform.position;
+            _inventoryItem.transform.SetParent(storedItemsParent);
         }
         else
         {
@@ -45,6 +57,7 @@ public class SlotGridManager : MonoBehaviour
 
     public List<Slot> GetFreeAreaOfSlotsInGrid(Item _itemTryingToStore)
     {
+        currentSlotsArea.Clear();
         //We want to check for a free spot to store the item. We also want to check if the neighbour slots are available. We also want to return the location of the free spot.
         //First we check the first list of slots
         for (int y = 0; y < slotGrid.Slots.Count; y++)
@@ -82,11 +95,10 @@ public class SlotGridManager : MonoBehaviour
 
     private List<Slot> GetSlotsArea(Slot _currentSlot, Item _itemTryingToAdd)
     {
-        currentSlotsArea.Clear();
-        for (int y = _currentSlot.positionInGrid.y; y < _itemTryingToAdd.AmountOfSlotsOccupying.y; y++)
+        for (int y = _currentSlot.positionInGrid.y; y < _currentSlot.positionInGrid.y + _itemTryingToAdd.AmountOfSlotsOccupying.y; y++)
         {
             List<GameObject> subList = slotGrid.Slots[y];
-            for (int x = _currentSlot.positionInGrid.x; x < _itemTryingToAdd.AmountOfSlotsOccupying.x; x++)
+            for (int x = _currentSlot.positionInGrid.x; x < _currentSlot.positionInGrid.x + _itemTryingToAdd.AmountOfSlotsOccupying.x; x++)
             {
                 Slot currentSlot = subList[x].GetComponent<Slot>();
                 if (!currentSlot.IsOccupied)

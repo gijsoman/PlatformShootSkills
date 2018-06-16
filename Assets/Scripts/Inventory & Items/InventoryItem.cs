@@ -9,6 +9,8 @@ public class InventoryItem : MonoBehaviour
     private SlotGrid slotGrid;
     private RectTransform rect;
 
+    public Item item;
+
     bool isDragging = false;
 
     private void Awake()
@@ -19,6 +21,7 @@ public class InventoryItem : MonoBehaviour
 
     public void SetInventoryItem(Item _item, Transform _parent)
     {
+        item = _item;
         slotGrid = SlotGrid.instance;
         slotSize = slotGrid.slotWidthAndHeight;
         transform.SetParent(_parent);

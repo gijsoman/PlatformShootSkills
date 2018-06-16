@@ -9,6 +9,5 @@ public class Slot : MonoBehaviour
     public bool IsOccupied;
 
     public Vector2Int positionInGrid;
-    private GameObject storedItem;
-    private Vector2Int storedItemSize;
+    public GameObject storedItem;
 }
