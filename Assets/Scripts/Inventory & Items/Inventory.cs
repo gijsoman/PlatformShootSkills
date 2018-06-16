@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    //We could also make a base class for inventory so we can create different types of inventories OR we could make an interface that ads inventory functionality..... OR We could make components that add fucntionality for differnt inventory types.
+
     #region Singleton
     public static Inventory instance;
 
@@ -16,8 +18,11 @@ public class Inventory : MonoBehaviour
     }
     #endregion
 
-    public delegate void OnItemChanges(Item _item);
-    public OnItemChanges onItemChangesCallBack;
+    public delegate void OnItemAdded(Item _item);
+    public OnItemAdded onItemAddedCallBack;
+
+    public delegate void OnItemRemoved(Item _item);
+    public OnItemRemoved onItemRemovedCallBack;
 
     public int MaxSpace = 20;
     public List<Item> Items = new List<Item>();
@@ -42,14 +47,13 @@ public class Inventory : MonoBehaviour
             return false;
         }
 
-        //if we can store item invoke delegate and add it to the list. otherwise we return false with a warning.
         if (slotGridManager.CanWeStoreItem(_item))
         {
             Items.Add(_item);
             currentlyOccupiedSpace += _item.ItemSize();
-            if (onItemChangesCallBack != null)
+            if (onItemAddedCallBack != null)
             {
-                onItemChangesCallBack.Invoke(_item);
+                onItemAddedCallBack.Invoke(_item);
             }
             return true;
         }
@@ -61,9 +65,9 @@ public class Inventory : MonoBehaviour
     public void Remove(Item _item)
     {
         Items.Remove(_item);
-        if (onItemChangesCallBack != null)
+        if (onItemRemovedCallBack != null)
         {
-            onItemChangesCallBack.Invoke(_item);
+            onItemRemovedCallBack.Invoke(_item);
         }
     }
 }

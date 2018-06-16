@@ -13,7 +13,7 @@ public class InventoryItemCreator : MonoBehaviour
     {
         inventory = Inventory.instance;
         slotGridManager = SlotGridStorageManager.instance;
-        inventory.onItemChangesCallBack += CreateInventoryItem;
+        inventory.onItemAddedCallBack += CreateInventoryItem;
     }
 
     private void CreateInventoryItem(Item _item)
