@@ -43,14 +43,19 @@ public class Inventory : MonoBehaviour
         }
 
         //if we can store item invoke delegate and add it to the list. otherwise we return false with a warning.
-        
-        Items.Add(_item);
-        currentlyOccupiedSpace += _item.ItemSize();
-        if (onItemChangesCallBack != null)
+        if (slotGridManager.CanWeStoreItem(_item))
         {
-            onItemChangesCallBack.Invoke(_item);
+            Items.Add(_item);
+            currentlyOccupiedSpace += _item.ItemSize();
+            if (onItemChangesCallBack != null)
+            {
+                onItemChangesCallBack.Invoke(_item);
+            }
+            return true;
         }
-        return true;
+
+        Debug.Log("Your bag is not organized enough. We can't store the item");
+        return false;
     }
 
     public void Remove(Item _item)

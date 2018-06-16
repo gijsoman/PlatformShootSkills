@@ -32,29 +32,27 @@ public class SlotGridManager : MonoBehaviour
     {
         if (FindSlotToStoreItem(_itemToCheck) != null)
         {
-
+            return true;
         }
+        return false;
     }
 
     public void StoreItem(GameObject _inventoryItem) 
     {
         Item itemTryingToStore = _inventoryItem.gameObject.GetComponent<InventoryItem>().item;
         //I want a list of all slots we can store store the item in......
-        if (FindSlotToStoreItem(itemTryingToStore) != null)
+        Debug.Log("We can store the item");
+        //Store the actual item
+        for (int i = 0; i < currentSlotsArea.Count; i++)
         {
-            Debug.Log("We can store the item");
-            //Store the actual item
-            for (int i = 0; i < currentSlotsArea.Count; i++)
-            {
-                currentSlotsArea[i].IsOccupied = true;
-                currentSlotsArea[i].storedItem = _inventoryItem;
-            }
-            //change the position, parent and the pivot of the item.
-            RectTransform rect = _inventoryItem.GetComponent<RectTransform>();
-            rect.pivot = new Vector2(0, 1);
-            _inventoryItem.transform.position = currentSlotsArea[0].transform.position;
-            _inventoryItem.transform.SetParent(storedItemsParent);
+            currentSlotsArea[i].IsOccupied = true;
+            currentSlotsArea[i].storedItem = _inventoryItem;
         }
+        //change the position, parent and the pivot of the item.
+        RectTransform rect = _inventoryItem.GetComponent<RectTransform>();
+        rect.pivot = new Vector2(0, 1);
+        _inventoryItem.transform.position = currentSlotsArea[0].transform.position;
+        _inventoryItem.transform.SetParent(storedItemsParent);
         Debug.Log("We can not store the item");
     }
 
