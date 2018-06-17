@@ -4,7 +4,7 @@
 public class PlayerController : MonoBehaviour
 {
     private PlayerMotor motor;
-    private Transform camera;
+    private Transform cameraTransform;
 
     private bool jumping;
     private Vector3 cameraForward;
@@ -16,9 +16,8 @@ public class PlayerController : MonoBehaviour
 
         if (Camera.main != null)
         {
-            camera = Camera.main.transform;
+            cameraTransform = Camera.main.transform;
         }
-
         else
         {
             Debug.LogWarning("Warning: no main camera found. Third person character needs a Camera tagged \"MainCamera\", for camera-relative controls. Now using world-relative controls", gameObject);
@@ -38,10 +37,10 @@ public class PlayerController : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
-        if (camera != null)
+        if (cameraTransform != null)
         {
-            cameraForward = Vector3.Scale(camera.forward, new Vector3(1, 0, 1)).normalized;
-            move = vertical * cameraForward + horizontal * camera.right;
+            cameraForward = Vector3.Scale(cameraTransform.forward, new Vector3(1, 0, 1)).normalized;
+            move = vertical * cameraForward + horizontal * cameraTransform.right;
         }
         else
         {

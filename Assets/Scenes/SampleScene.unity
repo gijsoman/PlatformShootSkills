@@ -145,8 +145,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ef8d82bf86ce8f42aee42331ae6e944, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SameRotationAsCharacter: 1
   DistanceFromTarget: 1
   target: {fileID: 804336031}
+  pitchMin: 0
+  pitchMax: 80
+  rotationSmoothTime: 0.05
 --- !u!81 &81338061
 AudioListener:
   m_ObjectHideFlags: 0
@@ -235,12 +239,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 532db28ec73265a459899800601a8546, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 10
   invertAxis: 0
-  pitchMin: -14
-  pitchMax: 85
-  rotationSmoothTime: 0.05
   hideCursor: 0
+  mouseSensitivity: 10
 --- !u!1 &101075219
 GameObject:
   m_ObjectHideFlags: 0

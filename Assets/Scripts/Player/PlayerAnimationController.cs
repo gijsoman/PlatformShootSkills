@@ -33,7 +33,6 @@ public class PlayerAnimationController : MonoBehaviour
         {
             PlayerAnimator.SetFloat("Jump", _rigidbody.velocity.y);
         }
-
         if (_isGrounded && _move.magnitude > 0)
         {
             PlayerAnimator.speed = animationSpeedMultiplier;

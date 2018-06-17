@@ -3,19 +3,11 @@
 [RequireComponent(typeof(ThirdPersonCamera))]
 public class ThirdPersonCameraMouseControl : MonoBehaviour
 {
-    [SerializeField] private float mouseSensitivity = 10f;
     [SerializeField] private bool invertAxis = false;
-    [SerializeField] private float pitchMin = -40f;
-    [SerializeField] private float pitchMax = 85f;
-    [SerializeField] private float rotationSmoothTime = 0.05f;
     [SerializeField] private bool hideCursor = false;
+    [SerializeField] private float mouseSensitivity = 10f;
 
     private ThirdPersonCamera thirdPersonCamera;
-
-    private float yaw;
-    private float pitch;
-    private Vector3 currentRotation;
-    private Vector3 rotationVelocity;
 
     void Start ()
     {
@@ -33,18 +25,13 @@ public class ThirdPersonCameraMouseControl : MonoBehaviour
     {
         if (!invertAxis)
         {
-            yaw += Input.GetAxis("Mouse X") * mouseSensitivity;
-            pitch -= Input.GetAxis("Mouse Y") * mouseSensitivity;
+            thirdPersonCamera.Yaw += Input.GetAxis("Mouse X") * mouseSensitivity;
+            thirdPersonCamera.Pitch -= Input.GetAxis("Mouse Y") * mouseSensitivity;
         }
         else
         {
-            yaw -= Input.GetAxis("Mouse X") * mouseSensitivity;
-            pitch += Input.GetAxis("Mouse Y") * mouseSensitivity;
+            thirdPersonCamera.Yaw -= Input.GetAxis("Mouse X") * mouseSensitivity;
+            thirdPersonCamera.Pitch += Input.GetAxis("Mouse Y") * mouseSensitivity;
         }
-
-        pitch = Mathf.Clamp(pitch, pitchMin, pitchMax);
-        currentRotation = Vector3.SmoothDamp(currentRotation, new Vector3(pitch, yaw), ref rotationVelocity, rotationSmoothTime);
-
-        thirdPersonCamera.CurrentRotation = currentRotation;
     }
 }
