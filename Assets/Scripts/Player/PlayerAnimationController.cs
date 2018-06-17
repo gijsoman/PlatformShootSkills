@@ -8,7 +8,7 @@ public class PlayerAnimationController : MonoBehaviour
     [SerializeField] private float animationSpeedMultiplier;
 
     private PlayerMotor playerMotor;
-    private Rigidbody rigidbody;
+    private Rigidbody rb;
 
     private bool isGrounded;
     private float moveSpeedMultiplier;
@@ -21,7 +21,7 @@ public class PlayerAnimationController : MonoBehaviour
 
     public void UpdateAnimator(Vector3 _move, float _forwardAmount, float _turnAmount, bool _isGrounded, Rigidbody _rigidbody, float _moveSpeedMultiplier)
     {
-        rigidbody = _rigidbody;
+        rb = _rigidbody;
         moveSpeedMultiplier = _moveSpeedMultiplier;
         isGrounded = _isGrounded;
 
@@ -55,8 +55,8 @@ public class PlayerAnimationController : MonoBehaviour
         {
             Vector3 v = (PlayerAnimator.deltaPosition * moveSpeedMultiplier) / Time.deltaTime;
 
-            v.y = rigidbody.velocity.y;
-            rigidbody.velocity = v;
+            v.y = rb.velocity.y;
+            rb.velocity = v;
         }
     }
 }
