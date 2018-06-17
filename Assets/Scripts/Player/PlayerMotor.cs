@@ -9,6 +9,7 @@ public class PlayerMotor : MonoBehaviour
     [SerializeField] private float stationaryTurnSpeed = 180;
     [SerializeField] private float jumpPower = 12f;
     [Range(1f, 4f)][SerializeField] private float gravityMultiplier = 2f;
+    [SerializeField] private float runCycleLegOffset = 0.2f;
     [SerializeField] private float movementSpeedMultiplier = 1f;
     [SerializeField] private float groundCheckDistance = 0.2f;
 
@@ -20,6 +21,7 @@ public class PlayerMotor : MonoBehaviour
     private float origGroundCheckDistane;
     private float turnAmount;
     private float forwardAmount;
+    private const float half = 0.5f;
     private Vector3 groundNormal;
 
     private void Start()
@@ -55,7 +57,7 @@ public class PlayerMotor : MonoBehaviour
             HandleAirbourneMovement();
         }
 
-        animationController.UpdateAnimator(_moveDirection, forwardAmount, turnAmount, isGrounded, rb, movementSpeedMultiplier);
+        animationController.UpdateAnimator(_moveDirection, forwardAmount, turnAmount, isGrounded, rb, movementSpeedMultiplier, runCycleLegOffset, half);
     }
 
     private void HandleGroundMovement(bool _jumping)

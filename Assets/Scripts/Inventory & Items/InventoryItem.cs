@@ -3,13 +3,13 @@ using UnityEngine.UI;
 
 public class InventoryItem : MonoBehaviour
 {
+    public Item ContainingItem;
+
     [SerializeField] private float slotSize;
     [SerializeField] private Image itemIcon;
 
     private SlotGrid slotGrid;
     private RectTransform rect;
-
-    public Item item;
 
     bool isDragging = false;
 
@@ -21,9 +21,9 @@ public class InventoryItem : MonoBehaviour
 
     public void SetInventoryItem(Item _item, Transform _parent)
     {
-        item = _item;
+        ContainingItem = _item;
         slotGrid = SlotGrid.instance;
-        slotSize = slotGrid.slotWidthAndHeight;
+        slotSize = slotGrid.SlotWidthAndHeight;
         transform.SetParent(_parent);
         ScaleInventoryItem(_item);
         itemIcon.sprite = _item.ItemIcon;

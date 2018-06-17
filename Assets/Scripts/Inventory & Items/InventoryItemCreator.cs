@@ -5,15 +5,15 @@ using UnityEngine.UI;
 public class InventoryItemCreator : MonoBehaviour
 {
     [SerializeField] private Transform createdInventoryItemParent;
-    private Inventory inventory;
 
+    private Inventory inventory;
     private SlotGridStorageManager slotGridManager;
 
     private void Start()
     {
         inventory = Inventory.instance;
         slotGridManager = SlotGridStorageManager.instance;
-        inventory.onItemAddedCallBack += CreateInventoryItem;
+        inventory.OnItemAddedCallBack += CreateInventoryItem;
     }
 
     private void CreateInventoryItem(Item _item)

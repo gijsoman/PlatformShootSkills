@@ -7,7 +7,6 @@ using UnityEngine;
 public class Slot : MonoBehaviour
 {
     public bool IsOccupied;
-
     public Vector2Int positionInGrid;
     public GameObject storedItem;
 }

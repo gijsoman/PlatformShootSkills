@@ -7,15 +7,16 @@ public class FocusInteractable : MonoBehaviour
     [SerializeField] private float maxRayDistance = 100f;
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private Transform rayCastOrigin;
-    [SerializeField] private Text currentlyFocussingInteractable; //I can fix this with a delegate.
+    [SerializeField] private Text currentlyFocussingInteractable;
 
     private Interactable closestObject;
 
     private float currentHitDistance;
     private float shortestDistance = Mathf.Infinity;
 
-	private void Update ()
+    private void Update ()
     {
+        currentlyFocussingInteractable.text = "Focussing Object: ";
         if (closestObject != null)
         {
             closestObject.Focused = false;
@@ -39,10 +40,10 @@ public class FocusInteractable : MonoBehaviour
                     closestObject.Focused = false;
                 }
 
-                if(closestObject = hit.transform.gameObject.GetComponent<Interactable>())
+                if (closestObject = hit.transform.gameObject.GetComponent<Interactable>())
                 {
                     closestObject.Focused = true;
-                    currentlyFocussingInteractable.text = closestObject.name;
+                    currentlyFocussingInteractable.text = "Focussing Object: " + closestObject.name;
                 }
             }
         }

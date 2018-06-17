@@ -34,37 +34,30 @@ public class SlotGridStorageManager : MonoBehaviour
         {
             return true;
         }
+
         return false;
     }
 
     public void StoreItem(GameObject _inventoryItem) 
     {
-        Item itemTryingToStore = _inventoryItem.gameObject.GetComponent<InventoryItem>().item;
-        //I want a list of all slots we can store store the item in......
-        Debug.Log("We can store the item");
-        //Store the actual item
         for (int i = 0; i < currentSlotsArea.Count; i++)
         {
             currentSlotsArea[i].IsOccupied = true;
             currentSlotsArea[i].storedItem = _inventoryItem;
         }
-        //change the position, parent and the pivot of the item.
+
         RectTransform rect = _inventoryItem.GetComponent<RectTransform>();
         rect.pivot = new Vector2(0, 1);
         _inventoryItem.transform.position = currentSlotsArea[0].transform.position;
         _inventoryItem.transform.SetParent(storedItemsParent);
-        Debug.Log("We can not store the item");
     }
 
     public List<Slot> FindSlotToStoreItem(Item _itemTryingToStore)
     {
         currentSlotsArea.Clear();
-        //We want to check for a free spot to store the item. We also want to check if the neighbour slots are available. We also want to return the location of the free spot.
         for (int y = 0; y < slotGrid.Slots.Count; y++)
         {
-            //We store the first list in a temporary sublist.
             List<GameObject> subList = slotGrid.Slots[y];
-            //Walk through each slot in this list
             for (int x = 0; x < subList.Count; x++)
             {
                 Slot currentSlot = subList[x].GetComponent<Slot>();
@@ -72,7 +65,6 @@ public class SlotGridStorageManager : MonoBehaviour
                 {
                     if (!CheckForEndOfGridReached(currentSlot, _itemTryingToStore))
                     {
-                        //Get all the neighbours of this slot if it it isn't occupied.
                         if (IsEverySlotInAreaFree(GetSlotsArea(currentSlot, _itemTryingToStore)))
                         {
                             return currentSlotsArea;
@@ -117,7 +109,6 @@ public class SlotGridStorageManager : MonoBehaviour
 
     private bool CheckForEndOfGridReached(Slot _currentSlot, Item _itemTryingToAdd)
     {
-        //check if the item is not to big for the remaining slots. 
         int amountOfYSlotsLeft = 0;
         int amountOfXSlotsLeft = 0;
 
@@ -136,6 +127,7 @@ public class SlotGridStorageManager : MonoBehaviour
         {
             return true;
         }
+
         if (amountOfXSlotsLeft < _itemTryingToAdd.AmountOfSlotsOccupying.x)
         {
             return true;

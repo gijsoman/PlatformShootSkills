@@ -1229,7 +1229,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1144321727}
-  - {fileID: 1159526452}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1352,6 +1351,7 @@ RectTransform:
   m_Children:
   - {fileID: 1704139607}
   - {fileID: 1460298336}
+  - {fileID: 1159526452}
   m_Father: {fileID: 981919007}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1416,17 +1416,17 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1159526451}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 981919007}
-  m_RootOrder: 1
+  m_Father: {fileID: 1144321727}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -744, y: -645}
-  m_SizeDelta: {x: 385.6, y: 99.2}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 326.2, y: 1030.3}
+  m_SizeDelta: {x: 590.4, y: 99.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1159526453
 MonoBehaviour:
@@ -1449,10 +1449,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 50
     m_FontStyle: 0
-    m_BestFit: 1
-    m_MinSize: 10
+    m_BestFit: 0
+    m_MinSize: 5
     m_MaxSize: 200
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -1706,7 +1706,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -480.00006, y: 292}
-  m_SizeDelta: {x: 891, y: 531.80005}
+  m_SizeDelta: {x: 898, y: 536}
   m_Pivot: {x: 0.50000006, y: 0.5}
 --- !u!114 &1704139608
 MonoBehaviour:
@@ -1739,8 +1739,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3df04af20bcbbe0468b7bf33ff4f0635, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotWidthAndHeight: 82.8
-  amountOfSlots: {x: 10, y: 6}
+  SlotWidthAndHeight: 83.5
+  AmountOfSlots: {x: 10, y: 6}
   slotPadding: 7
 --- !u!1 &1724301672
 GameObject:
@@ -1853,6 +1853,7 @@ GameObject:
   - component: {fileID: 1770730265}
   - component: {fileID: 1770730266}
   - component: {fileID: 1770730267}
+  - component: {fileID: 1770730268}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1899,6 +1900,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   createdInventoryItemParent: {fileID: 1704139607}
+--- !u!114 &1770730268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1770730264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ec0ab3a684039a46b0935b60f325063, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryPanel: {fileID: 1144321726}
 --- !u!1 &1778347019
 GameObject:
   m_ObjectHideFlags: 0
@@ -2726,9 +2739,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingTurnSpeed: 360
-  stationaryTurnSpeed: 180
-  jumpPower: 8
-  gravityMultiplier: 2
+  stationaryTurnSpeed: 360
+  jumpPower: 7
+  gravityMultiplier: 1.61
+  runCycleLegOffset: 0.2
   movementSpeedMultiplier: 1
   groundCheckDistance: 0.2
 --- !u!4 &1954017191 stripped
@@ -2747,7 +2761,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerAnimator: {fileID: 0}
-  animationSpeedMultiplier: 1.5
+  animationSpeedMultiplier: 1.2
 --- !u!114 &1954017193
 MonoBehaviour:
   m_ObjectHideFlags: 0

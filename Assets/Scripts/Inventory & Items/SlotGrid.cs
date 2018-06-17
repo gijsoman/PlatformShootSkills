@@ -2,11 +2,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-//TODO: 
-//1. Clean up your code. Place it following your conventions.
-//2. Add padding to cells.
-//3. Fix that the panel wont change size EVERY TIME.
-
 public class SlotGrid : MonoBehaviour
 {
     #region Singleton
@@ -21,14 +16,15 @@ public class SlotGrid : MonoBehaviour
         instance = this;
     }
     #endregion
-    public float slotWidthAndHeight = 20;
+
+    public float SlotWidthAndHeight = 20;
     public List<List<GameObject>> Slots = new List<List<GameObject>>();
-    public Vector2Int amountOfSlots = new Vector2Int(10, 10);
+    public Vector2Int AmountOfSlots = new Vector2Int(10, 10);
 
     [SerializeField] private int slotPadding = 10;
 
-    RectTransform rect;
-    AspectRatioFitter aspectFitter;
+    private RectTransform rect;
+    private AspectRatioFitter aspectFitter;
 
     private float gridStartPosition = 0;
     private float totalSlotHeight;
@@ -37,8 +33,8 @@ public class SlotGrid : MonoBehaviour
     private void OnValidate()
     {
         rect = GetComponent<RectTransform>();
-        totalSlotHeight = amountOfSlots.y * slotWidthAndHeight + (amountOfSlots.y - 1) * slotPadding;
-        totalSlotWidth = amountOfSlots.x * slotWidthAndHeight + (amountOfSlots.x - 1) * slotPadding;
+        totalSlotHeight = AmountOfSlots.y * SlotWidthAndHeight + (AmountOfSlots.y - 1) * slotPadding;
+        totalSlotWidth = AmountOfSlots.x * SlotWidthAndHeight + (AmountOfSlots.x - 1) * slotPadding;
         rect.sizeDelta = new Vector2(totalSlotWidth, totalSlotHeight);
     }
 
@@ -49,10 +45,10 @@ public class SlotGrid : MonoBehaviour
 
     private void CreateSlots()
     {
-        for (int y = 0; y < amountOfSlots.y; y++)
+        for (int y = 0; y < AmountOfSlots.y; y++)
         {
             List<GameObject> slotsSubList = new List<GameObject>();
-            for (int x = 0; x < amountOfSlots.x; x++)
+            for (int x = 0; x < AmountOfSlots.x; x++)
             {
                 GameObject slot = new GameObject("Slot " + x + ", " + y);
                 
@@ -61,11 +57,11 @@ public class SlotGrid : MonoBehaviour
                 RectTransform slotRect = slot.GetComponent<RectTransform>();
                 currentSlot.positionInGrid = new Vector2Int(x, y);
                 currentSlot.transform.localScale = Vector3.one;
-                slotRect.sizeDelta = new Vector2(slotWidthAndHeight, slotWidthAndHeight);
+                slotRect.sizeDelta = new Vector2(SlotWidthAndHeight, SlotWidthAndHeight);
                 slotRect.pivot = new Vector2(0,1);
                 slotRect.anchorMin = new Vector2(0,1);
                 slotRect.anchorMax = new Vector2(0,1);
-                slotRect.anchoredPosition = new Vector2(gridStartPosition + x * slotWidthAndHeight + slotPadding * x, gridStartPosition - y * slotWidthAndHeight - slotPadding * y);
+                slotRect.anchoredPosition = new Vector2(gridStartPosition + x * SlotWidthAndHeight + slotPadding * x, gridStartPosition - y * SlotWidthAndHeight - slotPadding * y);
                 slotsSubList.Add(slot);
             }
             Slots.Add(slotsSubList);

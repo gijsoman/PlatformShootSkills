@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    //We could also make a base class for inventory so we can create different types of inventories OR we could make an interface that ads inventory functionality..... OR We could make components that add fucntionality for differnt inventory types.
-
     #region Singleton
     public static Inventory instance;
 
@@ -18,14 +16,12 @@ public class Inventory : MonoBehaviour
     }
     #endregion
 
-    public delegate void OnItemAdded(Item _item);
-    public OnItemAdded onItemAddedCallBack;
-
-    public delegate void OnItemRemoved(Item _item);
-    public OnItemRemoved onItemRemovedCallBack;
-
     public int MaxSpace = 20;
     public List<Item> Items = new List<Item>();
+    public delegate void OnItemAdded(Item _item);
+    public delegate void OnItemRemoved(Item _item);
+    public OnItemAdded OnItemAddedCallBack;
+    public OnItemRemoved OnItemRemovedCallBack;
     
     [SerializeField] private int currentlyOccupiedSpace;
 
@@ -36,7 +32,7 @@ public class Inventory : MonoBehaviour
     {
         slotGrid = SlotGrid.instance;
         slotGridManager = SlotGridStorageManager.instance;
-        MaxSpace = slotGrid.amountOfSlots.x * slotGrid.amountOfSlots.y;
+        MaxSpace = slotGrid.AmountOfSlots.x * slotGrid.AmountOfSlots.y;
     }
 
     public bool Add(Item _item)
@@ -51,9 +47,9 @@ public class Inventory : MonoBehaviour
         {
             Items.Add(_item);
             currentlyOccupiedSpace += _item.ItemSize();
-            if (onItemAddedCallBack != null)
+            if (OnItemAddedCallBack != null)
             {
-                onItemAddedCallBack.Invoke(_item);
+                OnItemAddedCallBack.Invoke(_item);
             }
             return true;
         }
@@ -65,9 +61,9 @@ public class Inventory : MonoBehaviour
     public void Remove(Item _item)
     {
         Items.Remove(_item);
-        if (onItemRemovedCallBack != null)
+        if (OnItemRemovedCallBack != null)
         {
-            onItemRemovedCallBack.Invoke(_item);
+            OnItemRemovedCallBack.Invoke(_item);
         }
     }
 }
