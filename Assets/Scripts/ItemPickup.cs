@@ -2,7 +2,8 @@
 
 public class ItemPickup : Interactable
 {
-    [SerializeField] private Item item;
+    public Item item;
+
     [SerializeField] private Material focussedMaterial;
     [SerializeField] private Material idleMaterial;
 
@@ -17,6 +18,7 @@ public class ItemPickup : Interactable
         if (Focused)
         {
             GetComponent<Renderer>().material = focussedMaterial;
+            name = item.ItemName;
             return true;
         }
         else
