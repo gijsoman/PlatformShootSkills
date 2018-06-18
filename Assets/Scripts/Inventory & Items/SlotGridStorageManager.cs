@@ -25,7 +25,7 @@ public class SlotGridStorageManager : MonoBehaviour
 
     private void Start()
     {
-        slotGrid = GetComponent<SlotGrid>();
+        slotGrid = SlotGrid.instance;
     }
 
     public bool CanWeStoreItem(Item _itemToCheck)

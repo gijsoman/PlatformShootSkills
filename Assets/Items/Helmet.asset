@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: Helmet
   m_EditorClassIdentifier: 
   ItemName: Helmet
-  ItemIcon: {fileID: 21300000, guid: 9866a92691696b346901281f2b329034, type: 3}
+  ItemIcon: {fileID: 21300000, guid: bf53ec09d5547a34eba421324540f27a, type: 3}
   AmountOfSlotsOccupying: {x: 1, y: 1}

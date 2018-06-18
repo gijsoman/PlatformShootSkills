@@ -43,6 +43,7 @@ public class FocusInteractable : MonoBehaviour
                 if (closestObject = hit.transform.gameObject.GetComponent<Interactable>())
                 {
                     closestObject.Focused = true;
+                    Debug.Log(closestObject.name);
                     currentlyFocussingInteractable.text = "Focussing Object: " + closestObject.name;
                 }
             }
