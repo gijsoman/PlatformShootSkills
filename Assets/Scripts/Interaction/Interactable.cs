@@ -8,10 +8,7 @@ public class Interactable : MonoBehaviour
 
     public virtual void Interact()
     {
-        if (!hasInteracted)
-        {
-            Debug.Log("Interacting");
-        }
+       
     }
 
     public virtual bool IsFocused()
