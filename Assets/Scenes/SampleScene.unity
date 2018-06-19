@@ -1060,10 +1060,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SameRotationAsCharacter: 1
   DistanceFromTarget: 1
+  RotationSmoothTime: 0.05
   target: {fileID: 804336031}
   pitchMin: 0
   pitchMax: 80
-  rotationSmoothTime: 0.05
 --- !u!81 &81338061
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1365,7 +1365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Focused: 0
-  item: {fileID: 11400000, guid: b427b467f5bfbd14c8674c16de2f3e15, type: 2}
+  ItemToPickup: {fileID: 11400000, guid: 40d7b9ac8763bfc408b1cdb3e243ae68, type: 2}
   focussedMaterial: {fileID: 2100000, guid: 00681868687771e4d98371f5d7ff2e89, type: 2}
   idleMaterial: {fileID: 2100000, guid: 13f33a0e8d7ab7c44a037c5a2b13e7d2, type: 2}
 --- !u!135 &101075222
@@ -1453,7 +1453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Focused: 0
-  item: {fileID: 11400000, guid: 40d7b9ac8763bfc408b1cdb3e243ae68, type: 2}
+  ItemToPickup: {fileID: 11400000, guid: b427b467f5bfbd14c8674c16de2f3e15, type: 2}
   focussedMaterial: {fileID: 2100000, guid: 00681868687771e4d98371f5d7ff2e89, type: 2}
   idleMaterial: {fileID: 2100000, guid: 13f33a0e8d7ab7c44a037c5a2b13e7d2, type: 2}
 --- !u!135 &111526665
@@ -1986,7 +1986,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Focused: 0
-  item: {fileID: 11400000, guid: b427b467f5bfbd14c8674c16de2f3e15, type: 2}
+  ItemToPickup: {fileID: 11400000, guid: 40d7b9ac8763bfc408b1cdb3e243ae68, type: 2}
   focussedMaterial: {fileID: 2100000, guid: 00681868687771e4d98371f5d7ff2e89, type: 2}
   idleMaterial: {fileID: 2100000, guid: 13f33a0e8d7ab7c44a037c5a2b13e7d2, type: 2}
 --- !u!135 &156702487
@@ -2253,7 +2253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Focused: 0
-  item: {fileID: 11400000, guid: 0cf7a1ae51cead749bcc9eec80f25a45, type: 2}
+  ItemToPickup: {fileID: 11400000, guid: 40d7b9ac8763bfc408b1cdb3e243ae68, type: 2}
   focussedMaterial: {fileID: 2100000, guid: 00681868687771e4d98371f5d7ff2e89, type: 2}
   idleMaterial: {fileID: 2100000, guid: 13f33a0e8d7ab7c44a037c5a2b13e7d2, type: 2}
 --- !u!135 &167927259
@@ -2921,7 +2921,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Focused: 0
-  item: {fileID: 11400000, guid: 40d7b9ac8763bfc408b1cdb3e243ae68, type: 2}
+  ItemToPickup: {fileID: 11400000, guid: 40d7b9ac8763bfc408b1cdb3e243ae68, type: 2}
   focussedMaterial: {fileID: 2100000, guid: 00681868687771e4d98371f5d7ff2e89, type: 2}
   idleMaterial: {fileID: 2100000, guid: 13f33a0e8d7ab7c44a037c5a2b13e7d2, type: 2}
 --- !u!135 &220488584
@@ -3686,7 +3686,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Focused: 0
-  item: {fileID: 11400000, guid: 0cf7a1ae51cead749bcc9eec80f25a45, type: 2}
+  ItemToPickup: {fileID: 11400000, guid: b427b467f5bfbd14c8674c16de2f3e15, type: 2}
   focussedMaterial: {fileID: 2100000, guid: 00681868687771e4d98371f5d7ff2e89, type: 2}
   idleMaterial: {fileID: 2100000, guid: 13f33a0e8d7ab7c44a037c5a2b13e7d2, type: 2}
 --- !u!135 &336362774
@@ -4036,7 +4036,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Focused: 0
-  item: {fileID: 11400000, guid: b427b467f5bfbd14c8674c16de2f3e15, type: 2}
+  ItemToPickup: {fileID: 11400000, guid: 7299d893caf694e4db7f9be027ba5ddd, type: 2}
   focussedMaterial: {fileID: 2100000, guid: 00681868687771e4d98371f5d7ff2e89, type: 2}
   idleMaterial: {fileID: 2100000, guid: 13f33a0e8d7ab7c44a037c5a2b13e7d2, type: 2}
 --- !u!135 &383408556
@@ -4124,7 +4124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Focused: 0
-  item: {fileID: 11400000, guid: 40d7b9ac8763bfc408b1cdb3e243ae68, type: 2}
+  ItemToPickup: {fileID: 11400000, guid: b427b467f5bfbd14c8674c16de2f3e15, type: 2}
   focussedMaterial: {fileID: 2100000, guid: 00681868687771e4d98371f5d7ff2e89, type: 2}
   idleMaterial: {fileID: 2100000, guid: 13f33a0e8d7ab7c44a037c5a2b13e7d2, type: 2}
 --- !u!135 &389068007
@@ -4404,7 +4404,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Focused: 0
-  item: {fileID: 11400000, guid: b427b467f5bfbd14c8674c16de2f3e15, type: 2}
+  ItemToPickup: {fileID: 11400000, guid: b427b467f5bfbd14c8674c16de2f3e15, type: 2}
   focussedMaterial: {fileID: 2100000, guid: 00681868687771e4d98371f5d7ff2e89, type: 2}
   idleMaterial: {fileID: 2100000, guid: 13f33a0e8d7ab7c44a037c5a2b13e7d2, type: 2}
 --- !u!135 &417969839
@@ -5505,7 +5505,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Focused: 0
-  item: {fileID: 11400000, guid: 0cf7a1ae51cead749bcc9eec80f25a45, type: 2}
+  ItemToPickup: {fileID: 11400000, guid: b427b467f5bfbd14c8674c16de2f3e15, type: 2}
   focussedMaterial: {fileID: 2100000, guid: 00681868687771e4d98371f5d7ff2e89, type: 2}
   idleMaterial: {fileID: 2100000, guid: 13f33a0e8d7ab7c44a037c5a2b13e7d2, type: 2}
 --- !u!135 &502151379
@@ -6938,7 +6938,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Focused: 0
-  item: {fileID: 11400000, guid: 40d7b9ac8763bfc408b1cdb3e243ae68, type: 2}
+  ItemToPickup: {fileID: 11400000, guid: 0cf7a1ae51cead749bcc9eec80f25a45, type: 2}
   focussedMaterial: {fileID: 2100000, guid: 00681868687771e4d98371f5d7ff2e89, type: 2}
   idleMaterial: {fileID: 2100000, guid: 13f33a0e8d7ab7c44a037c5a2b13e7d2, type: 2}
 --- !u!135 &640579282
@@ -8456,7 +8456,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Focused: 0
-  item: {fileID: 11400000, guid: 40d7b9ac8763bfc408b1cdb3e243ae68, type: 2}
+  ItemToPickup: {fileID: 11400000, guid: 0cf7a1ae51cead749bcc9eec80f25a45, type: 2}
   focussedMaterial: {fileID: 2100000, guid: 00681868687771e4d98371f5d7ff2e89, type: 2}
   idleMaterial: {fileID: 2100000, guid: 13f33a0e8d7ab7c44a037c5a2b13e7d2, type: 2}
 --- !u!135 &779240013
@@ -10121,7 +10121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Focused: 0
-  item: {fileID: 11400000, guid: 7299d893caf694e4db7f9be027ba5ddd, type: 2}
+  ItemToPickup: {fileID: 11400000, guid: 40d7b9ac8763bfc408b1cdb3e243ae68, type: 2}
   focussedMaterial: {fileID: 2100000, guid: 00681868687771e4d98371f5d7ff2e89, type: 2}
   idleMaterial: {fileID: 2100000, guid: 13f33a0e8d7ab7c44a037c5a2b13e7d2, type: 2}
 --- !u!135 &962734033
@@ -11120,7 +11120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Focused: 0
-  item: {fileID: 11400000, guid: b427b467f5bfbd14c8674c16de2f3e15, type: 2}
+  ItemToPickup: {fileID: 11400000, guid: b427b467f5bfbd14c8674c16de2f3e15, type: 2}
   focussedMaterial: {fileID: 2100000, guid: 00681868687771e4d98371f5d7ff2e89, type: 2}
   idleMaterial: {fileID: 2100000, guid: 13f33a0e8d7ab7c44a037c5a2b13e7d2, type: 2}
 --- !u!135 &1067725558
@@ -12956,7 +12956,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Focused: 0
-  item: {fileID: 11400000, guid: b427b467f5bfbd14c8674c16de2f3e15, type: 2}
+  ItemToPickup: {fileID: 11400000, guid: 40d7b9ac8763bfc408b1cdb3e243ae68, type: 2}
   focussedMaterial: {fileID: 2100000, guid: 00681868687771e4d98371f5d7ff2e89, type: 2}
   idleMaterial: {fileID: 2100000, guid: 13f33a0e8d7ab7c44a037c5a2b13e7d2, type: 2}
 --- !u!135 &1336949804
@@ -14199,7 +14199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Focused: 0
-  item: {fileID: 11400000, guid: 0cf7a1ae51cead749bcc9eec80f25a45, type: 2}
+  ItemToPickup: {fileID: 11400000, guid: 40d7b9ac8763bfc408b1cdb3e243ae68, type: 2}
   focussedMaterial: {fileID: 2100000, guid: 00681868687771e4d98371f5d7ff2e89, type: 2}
   idleMaterial: {fileID: 2100000, guid: 13f33a0e8d7ab7c44a037c5a2b13e7d2, type: 2}
 --- !u!135 &1485242081
@@ -14632,7 +14632,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Focused: 0
-  item: {fileID: 11400000, guid: b427b467f5bfbd14c8674c16de2f3e15, type: 2}
+  ItemToPickup: {fileID: 11400000, guid: 40d7b9ac8763bfc408b1cdb3e243ae68, type: 2}
   focussedMaterial: {fileID: 2100000, guid: 00681868687771e4d98371f5d7ff2e89, type: 2}
   idleMaterial: {fileID: 2100000, guid: 13f33a0e8d7ab7c44a037c5a2b13e7d2, type: 2}
 --- !u!135 &1531241818
@@ -14787,7 +14787,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Focused: 0
-  item: {fileID: 11400000, guid: 40d7b9ac8763bfc408b1cdb3e243ae68, type: 2}
+  ItemToPickup: {fileID: 11400000, guid: 0cf7a1ae51cead749bcc9eec80f25a45, type: 2}
   focussedMaterial: {fileID: 2100000, guid: 00681868687771e4d98371f5d7ff2e89, type: 2}
   idleMaterial: {fileID: 2100000, guid: 13f33a0e8d7ab7c44a037c5a2b13e7d2, type: 2}
 --- !u!1 &1533306907
@@ -15581,7 +15581,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Focused: 0
-  item: {fileID: 11400000, guid: 40d7b9ac8763bfc408b1cdb3e243ae68, type: 2}
+  ItemToPickup: {fileID: 11400000, guid: 40d7b9ac8763bfc408b1cdb3e243ae68, type: 2}
   focussedMaterial: {fileID: 2100000, guid: 00681868687771e4d98371f5d7ff2e89, type: 2}
   idleMaterial: {fileID: 2100000, guid: 13f33a0e8d7ab7c44a037c5a2b13e7d2, type: 2}
 --- !u!135 &1687190210
@@ -16349,7 +16349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Focused: 0
-  item: {fileID: 11400000, guid: b427b467f5bfbd14c8674c16de2f3e15, type: 2}
+  ItemToPickup: {fileID: 11400000, guid: b427b467f5bfbd14c8674c16de2f3e15, type: 2}
   focussedMaterial: {fileID: 2100000, guid: 00681868687771e4d98371f5d7ff2e89, type: 2}
   idleMaterial: {fileID: 2100000, guid: 13f33a0e8d7ab7c44a037c5a2b13e7d2, type: 2}
 --- !u!135 &1716025585
@@ -16450,7 +16450,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Focused: 0
-  item: {fileID: 11400000, guid: 0cf7a1ae51cead749bcc9eec80f25a45, type: 2}
+  ItemToPickup: {fileID: 11400000, guid: 40d7b9ac8763bfc408b1cdb3e243ae68, type: 2}
   focussedMaterial: {fileID: 2100000, guid: 00681868687771e4d98371f5d7ff2e89, type: 2}
   idleMaterial: {fileID: 2100000, guid: 13f33a0e8d7ab7c44a037c5a2b13e7d2, type: 2}
 --- !u!135 &1724301675
@@ -16719,7 +16719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Focused: 0
-  item: {fileID: 11400000, guid: 40d7b9ac8763bfc408b1cdb3e243ae68, type: 2}
+  ItemToPickup: {fileID: 11400000, guid: 40d7b9ac8763bfc408b1cdb3e243ae68, type: 2}
   focussedMaterial: {fileID: 2100000, guid: 00681868687771e4d98371f5d7ff2e89, type: 2}
   idleMaterial: {fileID: 2100000, guid: 13f33a0e8d7ab7c44a037c5a2b13e7d2, type: 2}
 --- !u!135 &1733274121
@@ -17304,7 +17304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Focused: 0
-  item: {fileID: 11400000, guid: 7299d893caf694e4db7f9be027ba5ddd, type: 2}
+  ItemToPickup: {fileID: 11400000, guid: 40d7b9ac8763bfc408b1cdb3e243ae68, type: 2}
   focussedMaterial: {fileID: 2100000, guid: 00681868687771e4d98371f5d7ff2e89, type: 2}
   idleMaterial: {fileID: 2100000, guid: 13f33a0e8d7ab7c44a037c5a2b13e7d2, type: 2}
 --- !u!135 &1778347022
@@ -17888,7 +17888,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Focused: 0
-  item: {fileID: 11400000, guid: b427b467f5bfbd14c8674c16de2f3e15, type: 2}
+  ItemToPickup: {fileID: 11400000, guid: 40d7b9ac8763bfc408b1cdb3e243ae68, type: 2}
   focussedMaterial: {fileID: 2100000, guid: 00681868687771e4d98371f5d7ff2e89, type: 2}
   idleMaterial: {fileID: 2100000, guid: 13f33a0e8d7ab7c44a037c5a2b13e7d2, type: 2}
 --- !u!135 &1788520095
@@ -17989,7 +17989,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Focused: 0
-  item: {fileID: 11400000, guid: 0cf7a1ae51cead749bcc9eec80f25a45, type: 2}
+  ItemToPickup: {fileID: 11400000, guid: b427b467f5bfbd14c8674c16de2f3e15, type: 2}
   focussedMaterial: {fileID: 2100000, guid: 00681868687771e4d98371f5d7ff2e89, type: 2}
   idleMaterial: {fileID: 2100000, guid: 13f33a0e8d7ab7c44a037c5a2b13e7d2, type: 2}
 --- !u!135 &1789252179
@@ -18673,7 +18673,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Focused: 0
-  item: {fileID: 11400000, guid: 40d7b9ac8763bfc408b1cdb3e243ae68, type: 2}
+  ItemToPickup: {fileID: 11400000, guid: 40d7b9ac8763bfc408b1cdb3e243ae68, type: 2}
   focussedMaterial: {fileID: 2100000, guid: 00681868687771e4d98371f5d7ff2e89, type: 2}
   idleMaterial: {fileID: 2100000, guid: 13f33a0e8d7ab7c44a037c5a2b13e7d2, type: 2}
 --- !u!135 &1813322719
@@ -19359,7 +19359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Focused: 0
-  item: {fileID: 11400000, guid: 7299d893caf694e4db7f9be027ba5ddd, type: 2}
+  ItemToPickup: {fileID: 11400000, guid: b427b467f5bfbd14c8674c16de2f3e15, type: 2}
   focussedMaterial: {fileID: 2100000, guid: 00681868687771e4d98371f5d7ff2e89, type: 2}
   idleMaterial: {fileID: 2100000, guid: 13f33a0e8d7ab7c44a037c5a2b13e7d2, type: 2}
 --- !u!135 &1904939124
@@ -19447,7 +19447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Focused: 0
-  item: {fileID: 11400000, guid: 40d7b9ac8763bfc408b1cdb3e243ae68, type: 2}
+  ItemToPickup: {fileID: 11400000, guid: 0cf7a1ae51cead749bcc9eec80f25a45, type: 2}
   focussedMaterial: {fileID: 2100000, guid: 00681868687771e4d98371f5d7ff2e89, type: 2}
   idleMaterial: {fileID: 2100000, guid: 13f33a0e8d7ab7c44a037c5a2b13e7d2, type: 2}
 --- !u!135 &1923110880
@@ -20693,7 +20693,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Focused: 0
-  item: {fileID: 11400000, guid: 0cf7a1ae51cead749bcc9eec80f25a45, type: 2}
+  ItemToPickup: {fileID: 11400000, guid: 40d7b9ac8763bfc408b1cdb3e243ae68, type: 2}
   focussedMaterial: {fileID: 2100000, guid: 00681868687771e4d98371f5d7ff2e89, type: 2}
   idleMaterial: {fileID: 2100000, guid: 13f33a0e8d7ab7c44a037c5a2b13e7d2, type: 2}
 --- !u!135 &1989182405
@@ -21045,7 +21045,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Focused: 0
-  item: {fileID: 11400000, guid: b427b467f5bfbd14c8674c16de2f3e15, type: 2}
+  ItemToPickup: {fileID: 11400000, guid: b427b467f5bfbd14c8674c16de2f3e15, type: 2}
   focussedMaterial: {fileID: 2100000, guid: 00681868687771e4d98371f5d7ff2e89, type: 2}
   idleMaterial: {fileID: 2100000, guid: 13f33a0e8d7ab7c44a037c5a2b13e7d2, type: 2}
 --- !u!135 &2019949953
@@ -21563,7 +21563,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Focused: 0
-  item: {fileID: 11400000, guid: b427b467f5bfbd14c8674c16de2f3e15, type: 2}
+  ItemToPickup: {fileID: 11400000, guid: 40d7b9ac8763bfc408b1cdb3e243ae68, type: 2}
   focussedMaterial: {fileID: 2100000, guid: 00681868687771e4d98371f5d7ff2e89, type: 2}
   idleMaterial: {fileID: 2100000, guid: 13f33a0e8d7ab7c44a037c5a2b13e7d2, type: 2}
 --- !u!135 &2066416931
@@ -22000,7 +22000,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Focused: 0
-  item: {fileID: 11400000, guid: 7299d893caf694e4db7f9be027ba5ddd, type: 2}
+  ItemToPickup: {fileID: 11400000, guid: 40d7b9ac8763bfc408b1cdb3e243ae68, type: 2}
   focussedMaterial: {fileID: 2100000, guid: 00681868687771e4d98371f5d7ff2e89, type: 2}
   idleMaterial: {fileID: 2100000, guid: 13f33a0e8d7ab7c44a037c5a2b13e7d2, type: 2}
 --- !u!135 &2098285937

@@ -83,7 +83,6 @@ public class SlotGridStorageManager : MonoBehaviour
         {
             if (_slotsArea[i].IsOccupied)
             {
-                Debug.Log("Not every slot is free");
                 return false;
             }
         }

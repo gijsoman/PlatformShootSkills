@@ -6,11 +6,11 @@ public class ThirdPersonCamera : MonoBehaviour
     public float Pitch { get; set; }
     public float Yaw { get; set; }
     public float DistanceFromTarget = 1f;
+    public float RotationSmoothTime = 0.05f;
 
     [SerializeField] private Transform target;
     [SerializeField] private float pitchMin = -40;
     [SerializeField] private float pitchMax = 80;
-    [SerializeField] private float rotationSmoothTime = 0.05f;
 
     private Vector3 rotationVelocity;
     private Vector3 currentRotation;
@@ -24,7 +24,7 @@ public class ThirdPersonCamera : MonoBehaviour
         else
         {
             Pitch = Mathf.Clamp(Pitch, pitchMin, pitchMax);
-            currentRotation = Vector3.SmoothDamp(currentRotation, new Vector3(Pitch, Yaw), ref rotationVelocity, rotationSmoothTime);
+            currentRotation = Vector3.SmoothDamp(currentRotation, new Vector3(Pitch, Yaw), ref rotationVelocity, RotationSmoothTime);
         }
 
         transform.eulerAngles = currentRotation;
