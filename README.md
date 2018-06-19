@@ -130,7 +130,45 @@ public class FocusInteractable : MonoBehaviour
 ## 4. Inventory System
 So I wanted to have an inventory system like Diablo 2 and Path of Exile. This was tough for me to start with. Currently you can only store items in the inventory and not get them out or move them around yet.
 
-First I had to make a grid of slots. I used a nested List for this so the size of the inventory could change while the game was being played. This felt a little bit tricky at the start because I had to create a list of lists. I can imagine that in some cases you even want a list of lists containing lists. 
+First I had to make a grid of slots. I used a nested List for this so the size of the inventory could change while the game was being played. This felt a little bit tricky at the start because I had to create a list of lists. I can imagine that in some cases you even want a list of lists containing lists. Here is how I did it:
 
+```C#
+ private void CreateSlots()
+    {
+        for (int y = 0; y < AmountOfSlots.y; y++)
+        {
+            List<GameObject> slotsSubList = new List<GameObject>();
+            for (int x = 0; x < AmountOfSlots.x; x++)
+            {
+                GameObject slot = new GameObject("Slot " + x + ", " + y);
+                
+                slot.transform.SetParent(transform);
+                Slot currentSlot = slot.AddComponent<Slot>();
+                RectTransform slotRect = slot.GetComponent<RectTransform>();
+                currentSlot.positionInGrid = new Vector2Int(x, y);
+                currentSlot.transform.localScale = Vector3.one;
+                slotRect.sizeDelta = new Vector2(SlotWidthAndHeight, SlotWidthAndHeight);
+                slotRect.pivot = new Vector2(0,1);
+                slotRect.anchorMin = new Vector2(0,1);
+                slotRect.anchorMax = new Vector2(0,1);
+                slotRect.anchoredPosition = new Vector2(gridStartPosition + x * SlotWidthAndHeight + slotPadding * x, gridStartPosition - y * SlotWidthAndHeight - slotPadding * y);
+                slotsSubList.Add(slot);
+            }
+            Slots.Add(slotsSubList);
+        }
+    }
+```
+After making the grid I needed something to manage it. Currently there can only be Items stored in the Inventory. Because this script is already pretty long I decided that in the future I will make seperate scripts for seperate gridmanagement related tasks. That's why the current script is calld "SlotGridStorageManager". 
+
+## Future adittions / TODO
+* Finishing the inventory system.
+* Adding a shooting mechanic.
+* Adding a skillbar with different skills.
+* Adding Enemies.
+* Optimizing player movement. 
+* Adding upgrades.
+* Adding Skill trees
+* Adding some climbing mechanic.
+* Anything Else I can think of that sounds fun or useful to make.
 
 
