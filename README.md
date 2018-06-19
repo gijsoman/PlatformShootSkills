@@ -1,6 +1,6 @@
 # PlatformShootSkills (Working Title) - WIP
 
-So I had this idea of making a platformer like game which takes place in a Retro Wave enviroment. It was a very shallow idea so i decided to just start making it and see where it got me from there. I mainly started this project to improve my Unity and C# skills.
+So I had this idea of making a platformer like game which takes place in a Retro Wave enviroment. It was a very shallow idea so I decided to just start making it and see where it got me from there. I mainly started this project to improve my Unity and C# skills.
 
 Here I want to show a few things that this project contains. Instead of reading the scripts in this readme feel free to download the project.
 
@@ -62,7 +62,7 @@ So the variables of this base can be easily modified by other scripts. Also this
 ## 3. Interacting with objects.
 So for the interaction with objects I made a base class that handles the basic interaction and keeps track of the focus of the object. Because different objects should do different things when interacted with you can easily Inherit this base class to write your future interaction. Currently I only have a script to pick up the items in the world. 
 
-So for picking up Items I had to get a little bit creative. First I thought I could just do it with colliders. But what if my character was colliding with 2 Items at the same time? I ended up casting a sphere cast in a certain direction and if it hit multiple items it calculates the distance between the origin of the spherecast and the item. The closest item is the focused item. Here is how i did it:
+So for picking up Items I had to get a little bit creative. First I thought I could just do it with colliders. But what if my character was colliding with 2 Items at the same time? I ended up casting a sphere cast in a certain direction and if it hit multiple items it calculates the distance between the origin of the spherecast and the item. The closest item is the focused item. Here is how I did it:
 
 ```C#
 using UnityEngine;
