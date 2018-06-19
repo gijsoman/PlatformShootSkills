@@ -19,7 +19,7 @@ So for the character movement I used Ethan from the standard assets. Ethan also 
 ## 2. The Camera.
 The camera was created so it could be easily expanded on. I thought of the behaviors I wanted for the camera and made a different script for every behavior. This is what the camera’s base looks like: 
 
-```Unity
+```C#
 using UnityEngine;
 
 public class ThirdPersonCamera : MonoBehaviour
