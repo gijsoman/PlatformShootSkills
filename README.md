@@ -1,4 +1,4 @@
-# PlatformShootSkills (Working Title)
+# PlatformShootSkills (Working Title) - WIP
 
 So I had this idea of making a platformer like game which takes place in a Retro Wave enviroment. It was a very shallow idea so i decided to just start making it and see where it got me from there. I mainly started this project to improve my Unity and C# skills.
 
@@ -7,7 +7,7 @@ Here I want to show a few things that this project contains.
 # Controls
 'WASD' or the 'Arrows' to move.
 'Space' to Jump.
-'I' to open your inventory. (inventory is WIP so it can only store items.)
+'I' to open your inventory (I just started with the inventory so it can only store items).
 'Mouse' to look around.
 'Scroll' to zoom in and out.
 
